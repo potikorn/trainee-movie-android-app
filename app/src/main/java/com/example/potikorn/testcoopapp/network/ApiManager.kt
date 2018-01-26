@@ -1,9 +1,9 @@
 package com.example.potikorn.testcoopapp.network
 
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import okhttp3.logging.HttpLoggingInterceptor
 
 
 class ApiManager {
@@ -23,7 +23,7 @@ class ApiManager {
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
-                    .addInterceptor (interceptor)
+                    .addInterceptor(interceptor)
                     .addInterceptor { chain ->
                         val original = chain.request()
                         val originalHttpUrl = original.url()

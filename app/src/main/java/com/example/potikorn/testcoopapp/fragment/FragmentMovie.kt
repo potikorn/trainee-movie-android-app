@@ -15,15 +15,15 @@ class FragmentMovie : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
+//            mParam1 = arguments.getString(ARG_PARAM1)
+//            mParam2 = arguments.getString(ARG_PARAM2)
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_fragment_movie, container, false)
-    }
+//    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+//                              savedInstanceState: Bundle?): View? {
+//        return inflater!!.inflate(R.layout.fragment_fragment_movie, container, false)
+//    }
 
     fun onButtonPressed(uri: Uri) {
         if (mListener != null) {
