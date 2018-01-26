@@ -1,4 +1,4 @@
-package com.example.fluke.fuckermovie2.network
+package com.example.potikorn.testcoopapp.network
 
 class BaseUrl {
     companion object {
