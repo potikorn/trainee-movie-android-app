@@ -30,7 +30,7 @@
             android:layout_gravity="top"
             android:layout_marginLeft="180sp"
             android:padding="7dp"
-            android:text="ชื่อหนัง"
+            tool:text="ชื่อหนัง"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -58,7 +58,7 @@
             android:layout_marginLeft="325sp"
             android:layout_marginTop="30sp"
             android:padding="7dp"
-            android:text="45.0" />
+            tool:text="45.0" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/button1"

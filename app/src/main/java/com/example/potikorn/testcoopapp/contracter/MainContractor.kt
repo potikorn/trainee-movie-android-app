@@ -6,7 +6,6 @@ interface MainContractor {
     interface Presenter{
         fun callBackData()
     }
-
     interface View{
         fun callBackData(arr : List<Movie>?)
     }

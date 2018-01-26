@@ -1,5 +1,4 @@
 package com.example.potikorn.testcoopapp.adapter
-
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +6,6 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.potikorn.testcoopapp.R
 import com.example.potikorn.testcoopapp.models.Movie
-
-
 import kotlinx.android.synthetic.main.list_item_movie.view.*
 
 class AdapterPoster(var movies: List<Movie>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -59,7 +56,6 @@ class AdapterPoster(var movies: List<Movie>) : RecyclerView.Adapter<RecyclerView
                     .into(itemView.TV)
             itemView.TV.setOnClickListener {
                 //callback?.onClick(movie)
-
             } }
     }
     inner class MovieViewHolder2(view: View) : RecyclerView.ViewHolder(view) {
