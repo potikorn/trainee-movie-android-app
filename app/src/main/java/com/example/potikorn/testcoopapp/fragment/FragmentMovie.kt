@@ -1,20 +1,31 @@
 package com.example.potikorn.testcoopapp.fragment
-
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.potikorn.testcoopapp.R
+import com.example.potikorn.testcoopapp.adapter.AdapterPoster
+import com.example.potikorn.testcoopapp.contracter.MainContractor
+import com.example.potikorn.testcoopapp.models.Movie
+import com.example.potikorn.testcoopapp.models.MovieList
+import com.example.potikorn.testcoopapp.presenter.MainPresenter
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 
-class FragmentMovie : Fragment() {
+class FragmentMovie : Fragment(),MainContractor.View {
     private var mParam1: String? = null
     private var mParam2: String? = null
     private var mListener: OnFragmentInteractionListener? = null
+    val movieAdapter: AdapterPoster by lazy{AdapterPoster(listOf())}
+    var presenter:MainContractor.Presenter?= MainPresenter(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        presenter?.callBackData()
         if (arguments != null) {
             mParam1 = arguments.getString(ARG_PARAM1)
             mParam2 = arguments.getString(ARG_PARAM2)
@@ -24,6 +35,13 @@ class FragmentMovie : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater!!.inflate(R.layout.fragment_fragment_movie, container, false)
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        moviesList?.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false))
+        moviesList.adapter = movieAdapter
+
     }
 
     fun onButtonPressed(uri: Uri) {
@@ -61,4 +79,9 @@ class FragmentMovie : Fragment() {
             return fragment
         }
     }
+
+    override fun callBackData(arr: List<Movie>?) { Log.e("testlog",arr.toString())
+        arr?.let { movieAdapter.setItem(it) }
+    }
+
 }
