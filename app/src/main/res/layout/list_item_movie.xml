@@ -30,7 +30,7 @@
             android:layout_gravity="top"
             android:layout_marginLeft="180sp"
             android:padding="7dp"
-            android:text="ชื่อหนัง"
+            tool:text="ชื่อหนัง"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -58,27 +58,27 @@
             android:layout_marginLeft="325sp"
             android:layout_marginTop="30sp"
             android:padding="7dp"
-            android:text="45.0" />
+            tool:text="45.0" />
 
         <android.support.v7.widget.AppCompatButton
-            android:textColor="@color/white"
             android:id="@+id/button1"
             android:layout_width="50dp"
             android:layout_height="40dp"
             android:layout_marginLeft="180sp"
             android:layout_marginTop="105sp"
             android:background="#e66262"
-            android:text="HD" />
+            android:text="HD"
+            android:textColor="@color/white" />
 
         <android.support.v7.widget.AppCompatButton
-            android:textColor="@color/white"
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="235sp"
             android:layout_marginTop="105sp"
             android:background="#5594ec"
-            android:text="IMAX" />
+            android:text="IMAX"
+            android:textColor="@color/white" />
 
 
         <android.support.v7.widget.AppCompatTextView
@@ -93,9 +93,6 @@
             android:textColor="@color/colorGreyLight"
             tool:text="วันที่" />
     </android.support.v7.widget.CardView>
-
-
-
 
 
 </RelativeLayout>
