@@ -5,12 +5,12 @@ import com.google.gson.annotations.SerializedName
 import org.parceler.Parcel
 
 @Parcel
-data class Movie(@SerializedName("vote_average") val vote_average: String? = null
-                 , @SerializedName("title") val title: String? = null
-                 , @SerializedName("poster_path") val poster: String? = null
-                 , @SerializedName("backdrop_path") val backdrop: String? = null
-                 , @SerializedName("overview") val overview: String? = null
-                 , @SerializedName("release_date") val release_date: String? = null) : Parcelable {
+data class Movie(@SerializedName("vote_average") private val vote_average: String? = null
+                 , @SerializedName("title") private val title: String? = null
+                 , @SerializedName("poster_path") private val poster: String? = null
+                 , @SerializedName("backdrop_path") private val backdrop: String? = null
+                 , @SerializedName("overview") private val overview: String? = null
+                 , @SerializedName("release_date") private val release_date: String? = null) : Parcelable {
     constructor(parcel: android.os.Parcel) : this(
             parcel.readString(),
             parcel.readString(),
@@ -44,4 +44,4 @@ data class Movie(@SerializedName("vote_average") val vote_average: String? = nul
 }
 
 @Parcel
-data class MovieList(@SerializedName("results") var results: ArrayList<Movie>? = null)
+data class MovieList(@SerializedName("results") var results: List<Movie>? = null)

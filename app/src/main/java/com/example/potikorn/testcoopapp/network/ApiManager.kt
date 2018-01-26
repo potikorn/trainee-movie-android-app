@@ -1,4 +1,4 @@
-package com.example.fluke.fuckermovie2.network
+package com.example.potikorn.testcoopapp.network
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -6,17 +6,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.logging.HttpLoggingInterceptor
 
 
-class WTFManager {
+class ApiManager {
 
     companion object Factory {
-        var serviceWTF: BaseService? = null
+        private var serviceFactory: BaseService? = null
         fun create(baseUrl: String): BaseService? {
-            serviceWTF = Retrofit.Builder()
+            serviceFactory = Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(baseUrl)
                     .client(setOkHttpClient())
                     .build().create(BaseService::class.java)
-            return serviceWTF
+            return serviceFactory
         }
 
         private fun setOkHttpClient(): OkHttpClient {
