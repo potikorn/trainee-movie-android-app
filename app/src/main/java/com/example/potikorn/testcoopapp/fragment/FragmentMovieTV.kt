@@ -1,5 +1,4 @@
 package com.example.potikorn.testcoopapp.fragment
-
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -9,7 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.potikorn.testcoopapp.R
 
-class FragmentMovie : Fragment() {
+class FragmentMovieTV : Fragment() {
+
     private var mParam1: String? = null
     private var mParam2: String? = null
     private var mListener: OnFragmentInteractionListener? = null
@@ -23,7 +23,7 @@ class FragmentMovie : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_fragment_movie, container, false)
+        return inflater!!.inflate(R.layout.fragment_fragment_movie_tv, container, false)
     }
 
     fun onButtonPressed(uri: Uri) {
@@ -37,6 +37,7 @@ class FragmentMovie : Fragment() {
         if (context is OnFragmentInteractionListener) {
             mListener = context
         } else {
+
         }
     }
 
@@ -52,13 +53,13 @@ class FragmentMovie : Fragment() {
     companion object {
         private val ARG_PARAM1 = "param1"
         private val ARG_PARAM2 = "param2"
-        fun newInstance(param1: String, param2: String): FragmentMovie {
-            val fragment = FragmentMovie()
+        fun newInstance(param1: String, param2: String): FragmentMovieTV {
+            val fragment = FragmentMovieTV()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)
             args.putString(ARG_PARAM2, param2)
             fragment.arguments = args
             return fragment
-        }
-    }
+        } }
+
 }

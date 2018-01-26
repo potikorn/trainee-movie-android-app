@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#734c4c"
-    tools:context="com.example.potikorn.testcoopapp.fragment.FragmentMovie">
+    android:background="#f7a2a2"
+    tools:context="com.example.potikorn.testcoopapp.fragment.FragmentMovieTV">
 
 
 </FrameLayout>
