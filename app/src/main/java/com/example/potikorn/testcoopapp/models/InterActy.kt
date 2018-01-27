@@ -16,7 +16,6 @@ class InterActy : InterActor.ActData {
             override fun onResponse(call: Call<MovieList>?, response: Response<MovieList>?) {
                 callback.onSuccess(response?.body()?.results)
             }
-
         })
     }
 

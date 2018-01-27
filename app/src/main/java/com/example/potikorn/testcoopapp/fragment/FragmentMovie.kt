@@ -12,9 +12,7 @@ import com.example.potikorn.testcoopapp.R
 import com.example.potikorn.testcoopapp.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.Movie
-import com.example.potikorn.testcoopapp.models.MovieList
 import com.example.potikorn.testcoopapp.presenter.MainPresenter
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 
 class FragmentMovie : Fragment(),MainContractor.View {
@@ -23,14 +21,6 @@ class FragmentMovie : Fragment(),MainContractor.View {
     private var mListener: OnFragmentInteractionListener? = null
     val movieAdapter: AdapterPoster by lazy{AdapterPoster(listOf())}
     var presenter:MainContractor.Presenter?= MainPresenter(this)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        presenter?.callBackData()
-        if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -66,6 +56,16 @@ class FragmentMovie : Fragment(),MainContractor.View {
     interface OnFragmentInteractionListener {
         fun onFragmentInteraction(uri: Uri)
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter?.callBackData()
+        if (arguments != null) {
+            mParam1 = arguments.getString(ARG_PARAM1)
+            mParam2 = arguments.getString(ARG_PARAM2)
+        }
+    }
+
 
     companion object {
         private val ARG_PARAM1 = "param1"
