@@ -1,13 +1,14 @@
 package com.example.potikorn.testcoopapp.fragment
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.potikorn.testcoopapp.DetailsMovie
 import com.example.potikorn.testcoopapp.R
 import com.example.potikorn.testcoopapp.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.contracter.MainContractor
@@ -15,7 +16,7 @@ import com.example.potikorn.testcoopapp.models.Movie
 import com.example.potikorn.testcoopapp.presenter.MainPresenter
 import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 
-class FragmentMovie : Fragment(),MainContractor.View {
+class FragmentMovie : Fragment(),MainContractor.View,AdapterPoster.MovieListListener {
     private var mParam1: String? = null
     private var mParam2: String? = null
     private var mListener: OnFragmentInteractionListener? = null
@@ -24,13 +25,16 @@ class FragmentMovie : Fragment(),MainContractor.View {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
         return inflater!!.inflate(R.layout.fragment_fragment_movie, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        movieAdapter?.setOnClickCallback(this)
         moviesList?.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false))
         moviesList.adapter = movieAdapter
+
 
     }
 
@@ -66,7 +70,6 @@ class FragmentMovie : Fragment(),MainContractor.View {
         }
     }
 
-
     companion object {
         private val ARG_PARAM1 = "param1"
         private val ARG_PARAM2 = "param2"
@@ -80,8 +83,15 @@ class FragmentMovie : Fragment(),MainContractor.View {
         }
     }
 
-    override fun callBackData(arr: List<Movie>?) { Log.e("testlog",arr.toString())
+    override fun callBackData(arr: List<Movie>?) {
         arr?.let { movieAdapter.setItem(it) }
     }
 
+    override fun onClick(movie: Movie) {
+        val intent = Intent(activity, DetailsMovie::class.java)
+        intent.putExtra("KEY_DATA", movie.overview)
+        intent.putExtra("KEY_IMAGE", movie.backdrop)
+        startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
 }

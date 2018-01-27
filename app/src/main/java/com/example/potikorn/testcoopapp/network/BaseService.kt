@@ -13,4 +13,5 @@ interface BaseService {
     @GET("movie/now_playing?api_key=c1618550083ac39008a92222d9c8a6a9&language=en-US&page=1")
     fun nowPlaying(): Call<MovieList>
 
+
 }

@@ -10,7 +10,6 @@ import com.example.potikorn.testcoopapp.network.BaseUrl
 import kotlinx.android.synthetic.main.list_item_movie.view.*
 
 class AdapterPoster(var movies: List<Movie>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
     var callback: MovieListListener? = null
     interface MovieListListener {
         fun onClick(movie: Movie)
@@ -22,21 +21,20 @@ class AdapterPoster(var movies: List<Movie>) : RecyclerView.Adapter<RecyclerView
         movies = items
         notifyDataSetChanged()
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
         return MovieViewHolder(view)
     }
-
     override fun getItemCount(): Int {
         return movies.size
     }
-
     override fun getItemViewType(position: Int): Int {
         return R.layout.list_item_movie
 
     }
-
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+        return (holder as MovieViewHolder).onBindata(movies.get(position))
+    }
     inner class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun onBindata(movie: Movie) {
             itemView.title.setText(movie.title)
@@ -44,12 +42,5 @@ class AdapterPoster(var movies: List<Movie>) : RecyclerView.Adapter<RecyclerView
             itemView.ratingBar.rating = movie.vote_average?.toFloat()!!.div(3)
             Glide.with(itemView.context).load(BaseUrl.baseUrlImageMovie+movie.poster).into(itemView.TV)
             itemView.TV.setOnClickListener {
-
-            } }
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        return (holder as MovieViewHolder).onBindata(movies.get(position))
-    }
-
+                callback?.onClick(movie) } } }
 }
