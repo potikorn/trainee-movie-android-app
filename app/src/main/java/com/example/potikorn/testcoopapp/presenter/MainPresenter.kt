@@ -5,10 +5,10 @@ import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.InterArty
 import com.example.potikorn.testcoopapp.models.Movie
 import com.example.potikorn.testcoopapp.models.Television
+import com.example.potikorn.testcoopapp.models.YouVidData
 
 class MainPresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListener {
-
-    override fun onSuccess(results: List<Movie>?, resultTv: List<Television>?) {
+    override fun onSuccess(results: List<Movie>?, resultTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
         view?.callBackData(results)
     }
 

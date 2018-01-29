@@ -7,12 +7,12 @@ import com.example.potikorn.testcoopapp.models.Movie
 import com.example.potikorn.testcoopapp.models.Television
 import com.example.potikorn.testcoopapp.models.YouVidData
 
-class SearchPresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListener {
+class YoutubePresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListener {
     override fun onSuccess(results: List<Movie>?, resultTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
-        view?.callBackData(results)
+        view?.callBackData(results, resultTv , resultsYoutube)
     }
 
     private val act: InterActor.ActData by lazy { InterArty() }
 
-    override fun callBackData(key: String?) = act.callDataFromSearch(key.toString(), this)
+    override fun callBackData(key: String?) = act.callYoutubeData(key.toString(),this)
 }
