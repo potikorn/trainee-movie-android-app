@@ -1,5 +1,4 @@
 package com.example.potikorn.testcoopapp.fragment
-
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -18,26 +17,21 @@ import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 class FragmentMovieTV : Fragment(), MainContractor.View {
     private val televisionAdapter: AdapterTelevision by lazy { AdapterTelevision(listOf()) }
     private val presenter: MainContractor.Presenter? by lazy { TelevisionPresenter(this) }
-
     override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
         arrTv?.let { it1 -> televisionAdapter.setItem(it1) }
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_fragment_movie, container, false)
-    }
+                              savedInstanceState: Bundle?): View? = inflater!!.inflate(R.layout.fragment_fragment_movie, container, false)
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         moviesList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = televisionAdapter
-        }
-    }
+        } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter?.callBackData()
-    }
+        presenter?.callBackData() }
 }

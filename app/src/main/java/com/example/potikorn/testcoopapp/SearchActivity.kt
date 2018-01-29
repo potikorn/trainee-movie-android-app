@@ -1,5 +1,4 @@
 package com.example.potikorn.testcoopapp
-
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -27,7 +26,6 @@ class SearchActivity : AppCompatActivity(), MainContractor.View {
         resultList?.layoutManager = LinearLayoutManager(this)
         resultList.adapter = movieAdapter
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         etSearch.setOnKeyListener { _, keyCode, keyEvent ->
             if (keyEvent.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 searchPresenter.callBackData(etSearch.text.toString())

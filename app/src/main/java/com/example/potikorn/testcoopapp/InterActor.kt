@@ -1,5 +1,4 @@
 package com.example.potikorn.testcoopapp
-
 import com.example.potikorn.testcoopapp.models.Movie
 import com.example.potikorn.testcoopapp.models.Television
 import com.example.potikorn.testcoopapp.models.YouVidData
@@ -15,4 +14,5 @@ interface InterActor{
         fun callNowPlayTVData(callback: OnFinishedListener)
         fun callYoutubeData(key:String,callback: OnFinishedListener)
     }
+
 }

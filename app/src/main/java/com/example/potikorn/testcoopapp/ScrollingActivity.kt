@@ -2,7 +2,6 @@ package com.example.potikorn.testcoopapp
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.potikorn.testcoopapp.fragment.FragmentMovie
@@ -19,7 +18,7 @@ class ScrollingActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.containerFragment, FragmentMovie.newInstance("", ""), "")
+                    .replace(R.id.containerFragment, FragmentMovie() , "")
                     .commit() }
         setImageViewScrolling()
 
@@ -32,7 +31,7 @@ class ScrollingActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.navigation_home -> {
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.containerFragment, FragmentMovie.newInstance("", ""), "")
+                        .replace(R.id.containerFragment, FragmentMovie(), "")
                         .commit()
                 return@OnNavigationItemSelectedListener true }
             R.id.navigation_dashboard -> {

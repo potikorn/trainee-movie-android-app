@@ -1,5 +1,4 @@
 package com.example.potikorn.testcoopapp.presenter
-
 import com.example.potikorn.testcoopapp.InterActor
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.InterArty
