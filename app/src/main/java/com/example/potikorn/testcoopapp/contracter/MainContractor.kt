@@ -1,12 +1,13 @@
 package com.example.potikorn.testcoopapp.contracter
 
 import com.example.potikorn.testcoopapp.models.Movie
+import com.example.potikorn.testcoopapp.models.Television
 
 interface MainContractor {
     interface Presenter{
         fun callBackData(key : String?=null)
     }
     interface View{
-        fun callBackData(arr : List<Movie>?)
+        fun callBackData(arr : List<Movie>?=null ,arrTv: List<Television>?=null)
     }
 }
