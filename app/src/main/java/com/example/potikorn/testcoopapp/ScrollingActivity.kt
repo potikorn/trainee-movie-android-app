@@ -1,6 +1,7 @@
 package com.example.potikorn.testcoopapp
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.potikorn.testcoopapp.fragment.FragmentMovie
@@ -19,7 +20,14 @@ class ScrollingActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                     .replace(R.id.containerFragment, FragmentMovie.newInstance("", ""), "")
                     .commit() }
-        setImageViewScrolling() }
+        setImageViewScrolling()
+
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+        }
+
+    }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -35,6 +43,6 @@ class ScrollingActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true } }
         false }
 
-    fun setImageViewScrolling(){ Glide.with(this).load(BaseUrl.baseUrlImageMovie+"/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg").into(imageViewScrolling) }
+    private fun setImageViewScrolling(){ Glide.with(this).load(BaseUrl.baseUrlImageMovie+"/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg").into(imageViewScrolling) }
 
 }

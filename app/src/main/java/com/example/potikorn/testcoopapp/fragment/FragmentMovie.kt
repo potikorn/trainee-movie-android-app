@@ -20,22 +20,19 @@ class FragmentMovie : Fragment(),MainContractor.View,AdapterPoster.MovieListList
     private var mParam1: String? = null
     private var mParam2: String? = null
     private var mListener: OnFragmentInteractionListener? = null
-    val movieAdapter: AdapterPoster by lazy{AdapterPoster(listOf())}
-    var presenter:MainContractor.Presenter?= MainPresenter(this)
+    private val movieAdapter: AdapterPoster by lazy{AdapterPoster(listOf())}
+    private var presenter:MainContractor.Presenter?= MainPresenter(this)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
         return inflater!!.inflate(R.layout.fragment_fragment_movie, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         movieAdapter?.setOnClickCallback(this)
-        moviesList?.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false))
+        moviesList?.layoutManager = LinearLayoutManager(context)
         moviesList.adapter = movieAdapter
-
-
     }
 
     fun onButtonPressed(uri: Uri) {

@@ -39,7 +39,11 @@ class AdapterPoster(private var movies: List<Movie>) : RecyclerView.Adapter<Recy
             itemView.rating.text = movie.vote_average.toString()
             itemView.ratingBar.rating = movie.vote_average?.toFloat()!!.div(3)
             Glide.with(itemView.context).load(BaseUrl.baseUrlImageMovie+movie.poster).into(itemView.TV)
-            itemView.TV.setOnClickListener {
-                callback?.onClick(movie) } }
+            itemView.movies_layout.setOnClickListener {
+                callback?.onClick(movie)
+            }
+
+
+        }
     }
 }
