@@ -19,7 +19,6 @@ class DetailsMovie : AppCompatActivity() {
         val movie: Movie = intent.getParcelableExtra(Key)
         sub.text = movie.title
         Glide.with(this).load(BaseUrl.baseUrlImageMovie + movie.backdrop).into(imageMoview)
-        Log.e("check data ", movie.toString())
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

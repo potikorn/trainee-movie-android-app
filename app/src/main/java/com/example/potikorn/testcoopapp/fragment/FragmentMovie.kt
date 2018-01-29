@@ -1,6 +1,6 @@
 package com.example.potikorn.testcoopapp.fragment
+
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.potikorn.testcoopapp.DetailsMovie
 import com.example.potikorn.testcoopapp.R
 import com.example.potikorn.testcoopapp.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.contracter.MainContractor
@@ -16,12 +15,12 @@ import com.example.potikorn.testcoopapp.models.Movie
 import com.example.potikorn.testcoopapp.presenter.MainPresenter
 import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 
-class FragmentMovie : Fragment(),MainContractor.View {
+class FragmentMovie : Fragment(), MainContractor.View {
     private var mParam1: String? = null
     private var mParam2: String? = null
     private var mListener: OnFragmentInteractionListener? = null
-    private val movieAdapter: AdapterPoster by lazy{AdapterPoster(listOf())}
-    private var presenter:MainContractor.Presenter?= MainPresenter(this)
+    private val movieAdapter: AdapterPoster by lazy { AdapterPoster(listOf()) }
+    private var presenter: MainContractor.Presenter? = MainPresenter(this)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

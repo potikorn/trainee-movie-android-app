@@ -1,4 +1,5 @@
 package com.example.potikorn.testcoopapp
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.Snackbar
@@ -22,9 +23,7 @@ class ScrollingActivity : AppCompatActivity() {
                     .commit() }
         setImageViewScrolling()
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        fab.setOnClickListener { view ->startActivity(Intent(this , SearchActivity::class.java))
         }
 
     }
