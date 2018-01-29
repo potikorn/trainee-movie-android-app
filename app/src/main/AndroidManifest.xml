@@ -30,7 +30,12 @@
         <activity
             android:name=".testser.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.potikorn.testcoopapp.ScrollingActivity" />
+        </activity>
     </application>
 
 </manifest>
