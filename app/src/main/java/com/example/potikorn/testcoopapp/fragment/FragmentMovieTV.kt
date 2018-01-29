@@ -11,15 +11,15 @@ import com.example.potikorn.testcoopapp.adapter.AdapterTelevision
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.Movie
 import com.example.potikorn.testcoopapp.models.Television
+import com.example.potikorn.testcoopapp.models.YouVidData
 import com.example.potikorn.testcoopapp.presenter.TelevisionPresenter
 import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 
 class FragmentMovieTV : Fragment(), MainContractor.View {
-
     private val televisionAdapter: AdapterTelevision by lazy { AdapterTelevision(listOf()) }
     private val presenter: MainContractor.Presenter? by lazy { TelevisionPresenter(this) }
 
-    override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?) {
+    override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
         arrTv?.let { it1 -> televisionAdapter.setItem(it1) }
     }
 
