@@ -8,6 +8,15 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class InterArty : InterActor.ActData {
+    override fun callYoutubeData(key: String, callback: InterActor.OnFinishedListener) {
+        ApiManager.Factory.create(BaseUrl.baseUrl)?.searchYoutube(key)?.enqueue(object : Callback<VidListFOF>{
+            override fun onFailure(call: Call<VidListFOF>?, t: Throwable?) {}
+            override fun onResponse(call: Call<VidListFOF>?, response: Response<VidListFOF>?) {
+                callback.onSuccess(arrayListOf() , arrayListOf(), response?.body()?.results)
+            }
+
+        })
+    }
 
     override fun callTVDataFromSearch(key: String, callback: InterActor.OnFinishedListener) {
         ApiManager.Factory.create(BaseUrl.baseUrl)?.searchTelevision(key)?.enqueue(object : Callback<TelevisionList>{
