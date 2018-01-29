@@ -6,13 +6,13 @@ import com.example.potikorn.testcoopapp.models.InterArty
 import com.example.potikorn.testcoopapp.models.Movie
 import com.example.potikorn.testcoopapp.models.Television
 
-class SearchPresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListener {
-
-    override fun onSuccess(results: List<Movie>?, resultTv: List<Television>?) {
-        view?.callBackData(results)
-    }
+class TelevisionPresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListener {
 
     private val act: InterActor.ActData by lazy { InterArty() }
 
-    override fun callBackData(key: String?) = act.callDataFromSearch(key.toString(), this)
+    override fun onSuccess(results: List<Movie>?, resultTv: List<Television>?) {
+        view?.callBackData(results, resultTv)
+    }
+
+    override fun callBackData(key: String?) = act.callNowPlayTVData(this)
 }

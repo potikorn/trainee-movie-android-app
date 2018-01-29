@@ -12,10 +12,16 @@ import com.example.potikorn.testcoopapp.R
 import com.example.potikorn.testcoopapp.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.Movie
+import com.example.potikorn.testcoopapp.models.Television
 import com.example.potikorn.testcoopapp.presenter.MainPresenter
 import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 
 class FragmentMovie : Fragment(), MainContractor.View {
+
+    override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?) {
+        arr?.let { movieAdapter.setItem(it) }
+    }
+
     private var mParam1: String? = null
     private var mParam2: String? = null
     private var mListener: OnFragmentInteractionListener? = null
@@ -77,10 +83,5 @@ class FragmentMovie : Fragment(), MainContractor.View {
             return fragment
         }
     }
-
-    override fun callBackData(arr: List<Movie>?) {
-        arr?.let { movieAdapter.setItem(it) }
-    }
-
 
 }

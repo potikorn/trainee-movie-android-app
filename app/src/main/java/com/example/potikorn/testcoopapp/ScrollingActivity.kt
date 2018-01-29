@@ -23,7 +23,7 @@ class ScrollingActivity : AppCompatActivity() {
                     .commit() }
         setImageViewScrolling()
 
-        fab.setOnClickListener { view ->startActivity(Intent(this , SearchActivity::class.java))
+        fab.setOnClickListener { _ ->startActivity(Intent(this , SearchActivity::class.java))
         }
 
     }
@@ -37,7 +37,7 @@ class ScrollingActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true }
             R.id.navigation_dashboard -> {
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.containerFragment, FragmentMovieTV.newInstance("", ""), "")
+                        .replace(R.id.containerFragment, FragmentMovieTV(), "")
                         .commit()
                 return@OnNavigationItemSelectedListener true } }
         false }

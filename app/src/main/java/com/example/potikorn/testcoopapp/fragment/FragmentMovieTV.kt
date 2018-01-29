@@ -1,27 +1,27 @@
 package com.example.potikorn.testcoopapp.fragment
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
+
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.potikorn.testcoopapp.DetailsMovie
 import com.example.potikorn.testcoopapp.R
-import com.example.potikorn.testcoopapp.adapter.AdapterPoster
+import com.example.potikorn.testcoopapp.adapter.AdapterTelevision
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.Movie
-import com.example.potikorn.testcoopapp.presenter.MainPresenter
+import com.example.potikorn.testcoopapp.models.Television
+import com.example.potikorn.testcoopapp.presenter.TelevisionPresenter
 import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 
-class FragmentMovieTV : Fragment(),MainContractor.View {
-    private var mParam1: String? = null
-    private var mParam2: String? = null
-    private var mListener: OnFragmentInteractionListener? = null
-    private val movieAdapter: AdapterPoster by lazy{ AdapterPoster(listOf()) }
-    var presenter: MainContractor.Presenter?= MainPresenter(this)
+class FragmentMovieTV : Fragment(), MainContractor.View {
+
+    private val televisionAdapter: AdapterTelevision by lazy { AdapterTelevision(listOf()) }
+    private val presenter: MainContractor.Presenter? by lazy { TelevisionPresenter(this) }
+
+    override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?) {
+        arrTv?.let { it1 -> televisionAdapter.setItem(it1) }
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -30,53 +30,14 @@ class FragmentMovieTV : Fragment(),MainContractor.View {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        moviesList?.layoutManager = LinearLayoutManager(context)
-        moviesList.adapter = movieAdapter
+        moviesList.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = televisionAdapter
+        }
     }
-
-    fun onButtonPressed(uri: Uri) {
-        if (mListener != null) {
-            mListener!!.onFragmentInteraction(uri)
-        } }
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            mListener = context
-        } else { }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        mListener = null
-    }
-
-    interface OnFragmentInteractionListener {
-        fun onFragmentInteraction(uri: Uri)
-    }
-
-    companion object {
-        private val ARG_PARAM1 = "param1"
-        private val ARG_PARAM2 = "param2"
-        fun newInstance(param1: String, param2: String): FragmentMovieTV {
-            val fragment = FragmentMovieTV()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putString(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
-        } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter?.callBackData()
-        if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
-        }
-    }
-
-    override fun callBackData(arr: List<Movie>?) {
-        arr?.let { movieAdapter.setItem(it) }
     }
 }
