@@ -26,8 +26,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.potikorn.testcoopapp.ScrollingActivity" />
-
         </activity>
+        <activity
+            android:name=".testser.ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

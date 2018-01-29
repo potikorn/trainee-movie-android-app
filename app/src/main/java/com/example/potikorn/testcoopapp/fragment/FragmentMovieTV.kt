@@ -1,5 +1,6 @@
 package com.example.potikorn.testcoopapp.fragment
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.potikorn.testcoopapp.DetailsMovie
 import com.example.potikorn.testcoopapp.R
 import com.example.potikorn.testcoopapp.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.contracter.MainContractor
@@ -14,40 +16,34 @@ import com.example.potikorn.testcoopapp.models.Movie
 import com.example.potikorn.testcoopapp.presenter.MainPresenter
 import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 
-class FragmentMovieTV : Fragment(),MainContractor.View {
+class FragmentMovieTV : Fragment(),MainContractor.View ,AdapterPoster.MovieListListener{
     private var mParam1: String? = null
     private var mParam2: String? = null
     private var mListener: OnFragmentInteractionListener? = null
-    val movieAdapter: AdapterPoster by lazy{ AdapterPoster(listOf()) }
+    private val movieAdapter: AdapterPoster by lazy{ AdapterPoster(listOf()) }
     var presenter: MainContractor.Presenter?= MainPresenter(this)
-
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater!!.inflate(R.layout.fragment_fragment_movie, container, false)
     }
 
-
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        moviesList?.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false))
+        moviesList?.layoutManager = LinearLayoutManager(context)
         moviesList.adapter = movieAdapter
-
     }
 
     fun onButtonPressed(uri: Uri) {
         if (mListener != null) {
             mListener!!.onFragmentInteraction(uri)
-        }
-    }
+        } }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is OnFragmentInteractionListener) {
             mListener = context
-        } else {
-
-        }
+        } else { }
     }
 
     override fun onDetach() {
@@ -71,7 +67,6 @@ class FragmentMovieTV : Fragment(),MainContractor.View {
             return fragment
         } }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter?.callBackData()
@@ -84,6 +79,15 @@ class FragmentMovieTV : Fragment(),MainContractor.View {
     override fun callBackData(arr: List<Movie>?) {
         arr?.let { movieAdapter.setItem(it) }
     }
+
+    override fun onClick(movie: Movie) {
+        val intent = Intent(activity, DetailsMovie::class.java)
+        intent.putExtra("KEY_DATA", movie.overview)
+        intent.putExtra("KEY_IMAGE", movie.backdrop)
+        startActivity(intent)
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+
 
 
 }

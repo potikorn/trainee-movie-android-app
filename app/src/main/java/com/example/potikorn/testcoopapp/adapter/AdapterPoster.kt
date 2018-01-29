@@ -1,5 +1,6 @@
 package com.example.potikorn.testcoopapp.adapter
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import com.example.potikorn.testcoopapp.models.Movie
 import com.example.potikorn.testcoopapp.network.BaseUrl
 import kotlinx.android.synthetic.main.list_item_movie.view.*
 
-class AdapterPoster(var movies: List<Movie>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdapterPoster(private var movies: List<Movie>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var callback: MovieListListener? = null
     interface MovieListListener {
         fun onClick(movie: Movie)
@@ -25,22 +26,21 @@ class AdapterPoster(var movies: List<Movie>) : RecyclerView.Adapter<RecyclerView
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
         return MovieViewHolder(view)
     }
-    override fun getItemCount(): Int {
-        return movies.size
-    }
-    override fun getItemViewType(position: Int): Int {
-        return R.layout.list_item_movie
+    override fun getItemCount(): Int = movies.size
 
-    }
+    override fun getItemViewType(position: Int): Int = R.layout.list_item_movie
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        return (holder as MovieViewHolder).onBindata(movies.get(position))
+        return (holder as MovieViewHolder).onBandit(movies[position])
     }
     inner class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun onBindata(movie: Movie) {
-            itemView.title.setText(movie.title)
-            itemView.rating.setText(movie.vote_average.toString())
+        fun onBandit(movie: Movie) {
+            itemView.title.text = movie.title
+            itemView.rating.text = movie.vote_average.toString()
             itemView.ratingBar.rating = movie.vote_average?.toFloat()!!.div(3)
             Glide.with(itemView.context).load(BaseUrl.baseUrlImageMovie+movie.poster).into(itemView.TV)
-            itemView.TV.setOnClickListener {
-                callback?.onClick(movie) } } }
+            itemView.movies_layout.setOnClickListener {
+                callback?.onClick(movie)
+            } }
+    }
 }
