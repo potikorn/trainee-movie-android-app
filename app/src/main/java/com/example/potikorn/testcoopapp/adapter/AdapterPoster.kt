@@ -41,9 +41,6 @@ class AdapterPoster(private var movies: List<Movie>) : RecyclerView.Adapter<Recy
             Glide.with(itemView.context).load(BaseUrl.baseUrlImageMovie+movie.poster).into(itemView.TV)
             itemView.movies_layout.setOnClickListener {
                 callback?.onClick(movie)
-            }
-
-
-        }
+            } }
     }
 }
