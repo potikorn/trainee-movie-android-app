@@ -16,7 +16,7 @@ import com.example.potikorn.testcoopapp.models.Movie
 import com.example.potikorn.testcoopapp.presenter.MainPresenter
 import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 
-class FragmentMovie : Fragment(),MainContractor.View,AdapterPoster.MovieListListener {
+class FragmentMovie : Fragment(),MainContractor.View {
     private var mParam1: String? = null
     private var mParam2: String? = null
     private var mListener: OnFragmentInteractionListener? = null
@@ -30,7 +30,6 @@ class FragmentMovie : Fragment(),MainContractor.View,AdapterPoster.MovieListList
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieAdapter?.setOnClickCallback(this)
         moviesList?.layoutManager = LinearLayoutManager(context)
         moviesList.adapter = movieAdapter
     }
@@ -84,11 +83,5 @@ class FragmentMovie : Fragment(),MainContractor.View,AdapterPoster.MovieListList
         arr?.let { movieAdapter.setItem(it) }
     }
 
-    override fun onClick(movie: Movie) {
-        val intent = Intent(activity, DetailsMovie::class.java)
-        intent.putExtra("KEY_DATA", movie.overview)
-        intent.putExtra("KEY_IMAGE", movie.backdrop)
-        startActivity(intent)
-        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-    }
+
 }
