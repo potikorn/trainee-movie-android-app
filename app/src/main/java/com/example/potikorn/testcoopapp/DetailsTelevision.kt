@@ -1,4 +1,5 @@
 package com.example.potikorn.testcoopapp
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -15,7 +16,7 @@ import com.example.potikorn.testcoopapp.presenter.YoutubePresenter
 import kotlinx.android.synthetic.main.activity_details_movie.*
 
 @SuppressLint("Registered")
-class DetailsTelevision : AppCompatActivity(),MainContractor.View {
+class DetailsTelevision : AppCompatActivity(), MainContractor.View {
     private val adapterYoutube: AdapterYoutube by lazy { AdapterYoutube(listOf()) }
     private val presenter: MainContractor.Presenter? by lazy { YoutubePresenter(this) }
 
@@ -34,7 +35,7 @@ class DetailsTelevision : AppCompatActivity(),MainContractor.View {
         }
         titleMovie.text = television.name
         sub.text = television.overview
-        Glide.with(this).load(BaseUrl.baseUrlImageMovie + television.backdrop_path).into(imageMoview)
+        imageMovie.load(BaseUrl.baseUrlImageMovie + television.backdrop_path)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

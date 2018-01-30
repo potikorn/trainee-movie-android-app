@@ -20,40 +20,38 @@
             android:layout_marginLeft="10dp"
             android:src="@drawable/boy" />
 
-
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginLeft="180sp"
+            android:layout_marginStart="180sp"
             android:padding="7dp"
-            tool:text="ชื่อหนัง"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
-            android:textStyle="bold" />
-
+            android:textStyle="bold"
+            tool:text="@string/name_movie" />
 
         <RatingBar
             android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
-            android:layout_marginLeft="180sp"
+            android:layout_marginStart="180sp"
             android:layout_marginTop="40sp"
             android:numStars="5"
             android:padding="7dp"
             android:stepSize="1.0"
-            style="?android:attr/ratingBarStyleIndicator"
             android:theme="@style/RatingBar" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/ratingBar"
+            android:layout_alignStart="@+id/ratingBar"
             android:layout_below="@+id/title"
-            android:layout_marginLeft="325sp"
+            android:layout_marginStart="325sp"
             android:layout_marginTop="30sp"
             android:padding="7dp"
             tool:text="45.0" />
@@ -62,35 +60,33 @@
             android:id="@+id/button1"
             android:layout_width="50dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="180sp"
+            android:layout_marginStart="180sp"
             android:layout_marginTop="105sp"
             android:background="#e66262"
-            android:text="HD"
+            android:text="@string/hd"
             android:textColor="@color/white" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginLeft="235sp"
+            android:layout_marginStart="235sp"
             android:layout_marginTop="105sp"
             android:background="#5594ec"
-            android:text="IMAX"
+            android:text="@string/imax_text"
             android:textColor="@color/white" />
-
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/subTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ratingBar"
-            android:layout_marginLeft="180sp"
+            android:layout_marginStart="180sp"
             android:layout_marginTop="145sp"
             android:padding="7dp"
-            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
             android:textColor="@color/colorGreyLight"
+            tool:ignore="RtlSymmetry"
             tool:text="วันที่" />
     </android.support.v7.widget.CardView>
-
-
 </RelativeLayout>

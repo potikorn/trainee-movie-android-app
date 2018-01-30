@@ -21,7 +21,5 @@ class AdapterYoutube(private var youtube: List<YouVidData>) : RecyclerView.Adapt
 
     override fun getItemViewType(position: Int): Int = R.layout.fuck_tube
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        return (holder as YoutubeViewHolder).onBind(youtube[position])
-    }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int)= (holder as YoutubeViewHolder).onBind(youtube[position])
 }

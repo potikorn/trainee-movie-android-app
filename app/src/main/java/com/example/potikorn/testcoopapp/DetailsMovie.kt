@@ -1,4 +1,5 @@
 package com.example.potikorn.testcoopapp
+
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -13,15 +14,16 @@ import com.example.potikorn.testcoopapp.network.BaseUrl
 import com.example.potikorn.testcoopapp.presenter.YoutubePresenter
 import kotlinx.android.synthetic.main.activity_details_movie.*
 
-class DetailsMovie : AppCompatActivity(),MainContractor.View {
+class DetailsMovie : AppCompatActivity(), MainContractor.View {
     private val adapterYoutube: AdapterYoutube by lazy { AdapterYoutube(listOf()) }
     private val presenter: MainContractor.Presenter? by lazy { YoutubePresenter(this) }
 
-    override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
-        resultsYoutube?.let { adapterYoutube.setItem(it) }
-    }
     companion object {
         const val Key = "KEY_DATA"
+    }
+
+    override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
+        resultsYoutube?.let(adapterYoutube::setItem)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +37,7 @@ class DetailsMovie : AppCompatActivity(),MainContractor.View {
         }
         titleMovie.text = movie.title
         sub.text = movie.overview
-        Glide.with(this).load(BaseUrl.baseUrlImageMovie + movie.backdrop).into(imageMoview)
+        imageMovie.load(BaseUrl.baseUrlImageMovie + movie.backdrop)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

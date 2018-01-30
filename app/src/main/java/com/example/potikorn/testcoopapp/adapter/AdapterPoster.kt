@@ -1,4 +1,5 @@
 package com.example.potikorn.testcoopapp.adapter
+
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,15 +13,15 @@ class AdapterPoster(private var movies: List<Movie>) : RecyclerView.Adapter<Recy
         movies = items
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
         return MovieViewHolder(view)
     }
+
     override fun getItemCount(): Int = movies.size
 
     override fun getItemViewType(position: Int): Int = R.layout.list_item_movie
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        return (holder as MovieViewHolder).onBind(movies[position])
-    }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) = (holder as MovieViewHolder).onBind(movies[position])
 }

@@ -9,4 +9,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_scrolling">Movie</string>
     <string name="action_settings">Settings</string>
+    <string name="movieposter">movieposter</string>
+    <string name="moviePoster">moviePoster</string>
+    <string name="app_poster">app-poster</string>
+    <string name="title_text">Title:</string>
+    <string name="overview">เนื้อเรื่อง</string>
+    <string name="movie_name_text">ชื่อหนัง</string>
+    <string name="name_movie">ชื่อหนัง</string>
+    <string name="hd">HD</string>
+    <string name="imax_text">IMAX</string>
+    <string name="youtube_image_view_text">ัyoutube-image-view</string>
+    <string name="movie_tail_path">/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg</string>
 </resources>
