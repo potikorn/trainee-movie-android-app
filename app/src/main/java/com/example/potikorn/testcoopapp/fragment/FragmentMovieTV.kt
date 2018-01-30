@@ -1,4 +1,5 @@
 package com.example.potikorn.testcoopapp.fragment
+
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -29,9 +30,11 @@ class FragmentMovieTV : Fragment(), MainContractor.View {
         moviesList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = televisionAdapter
-        } }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter?.callBackData() }
+        presenter?.callBackData()
+    }
 }

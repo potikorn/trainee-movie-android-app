@@ -4,13 +4,13 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import org.parceler.Parcel
 
-@Parcel
+@Parcel //TODO remove private when we need to use it
 data class Movie(@SerializedName("vote_average") val vote_average: String? = null
-                 , @SerializedName("title")  val title: String? = null
+                 , @SerializedName("title") val title: String? = null
                  , @SerializedName("poster_path") val poster: String? = null
-                 , @SerializedName("backdrop_path")  val backdrop: String? = null
+                 , @SerializedName("backdrop_path") val backdrop: String? = null
                  , @SerializedName("overview") val overview: String? = null
-                 , @SerializedName("release_date")  val release_date: String? = null) : Parcelable {
+                 , @SerializedName("release_date") private val release_date: String? = null) : Parcelable {
     constructor(parcel: android.os.Parcel) : this(
             parcel.readString(),
             parcel.readString(),
@@ -20,26 +20,21 @@ data class Movie(@SerializedName("vote_average") val vote_average: String? = nul
             parcel.readString())
 
     override fun writeToParcel(parcel: android.os.Parcel, flags: Int) {
-        parcel.writeString(vote_average)
-        parcel.writeString(title)
-        parcel.writeString(poster)
-        parcel.writeString(backdrop)
-        parcel.writeString(overview)
-        parcel.writeString(release_date)
+        parcel.apply {
+            writeString(vote_average)
+            writeString(title)
+            writeString(poster)
+            writeString(backdrop)
+            writeString(overview)
+            writeString(release_date)
+        }
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
+    override fun describeContents(): Int = 0
 
     companion object CREATOR : Parcelable.Creator<Movie> {
-        override fun createFromParcel(parcel: android.os.Parcel): Movie {
-            return Movie(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Movie?> {
-            return arrayOfNulls(size)
-        }
+        override fun createFromParcel(parcel: android.os.Parcel): Movie = Movie(parcel)
+        override fun newArray(size: Int): Array<Movie?> = arrayOfNulls(size)
     }
 }
 

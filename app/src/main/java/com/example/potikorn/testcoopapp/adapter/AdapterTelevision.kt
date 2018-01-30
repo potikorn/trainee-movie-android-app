@@ -13,15 +13,15 @@ class AdapterTelevision(private var television: List<Television>) : RecyclerView
         television = items
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
         return TelevisionViewHolder(view)
     }
+
     override fun getItemCount(): Int = television.size
 
     override fun getItemViewType(position: Int): Int = R.layout.list_item_movie
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        return (holder as TelevisionViewHolder).onBind(television[position])
-    }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) = (holder as TelevisionViewHolder).onBind(television[position])
 }
