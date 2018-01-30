@@ -31,7 +31,7 @@ class MyRecyclerViewAdapterButton (context: Context, animals: List<String>) : Re
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        var myTextView: TextView = itemView.findViewById(R.id.tvAnimalName)
+        var myTextView:TextView = itemView.findViewById(R.id.tvAnimalName)
 
         init {
             itemView.setOnClickListener(this)

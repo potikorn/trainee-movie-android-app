@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\code\codetreenee\testcode5\trainee-movie-android-app\app\app.iml" filepath="C:\code\codetreenee\testcode5\trainee-movie-android-app\app\app.iml" />
       <module fileurl="file://C:\Users\Fluke\AndroidStudioProjects\trainee-movie-android-app\testcoopapp.iml" filepath="C:\Users\Fluke\AndroidStudioProjects\trainee-movie-android-app\testcoopapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/trainee-movie-android-app.iml" filepath="$PROJECT_DIR$/.idea/trainee-movie-android-app.iml" />
       <module fileurl="file://C:\code\codetreenee\testcode5\trainee-movie-android-app\trainee-movie-android-app.iml" filepath="C:\code\codetreenee\testcode5\trainee-movie-android-app\trainee-movie-android-app.iml" />

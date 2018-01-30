@@ -1,25 +1,32 @@
 package com.example.potikorn.testcoopapp
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.example.potikorn.testcoopapp.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.adapter.AdapterTelevision
 import com.example.potikorn.testcoopapp.adapter.MyRecyclerViewAdapterButton
 import com.example.potikorn.testcoopapp.contracter.MainContractor
-import com.example.potikorn.testcoopapp.models.Movie
-import com.example.potikorn.testcoopapp.models.Television
 import com.example.potikorn.testcoopapp.models.YouVidData
+import com.example.potikorn.testcoopapp.models.movie.Movie
+import com.example.potikorn.testcoopapp.models.television.Television
+import com.example.potikorn.testcoopapp.network.BaseUrl
 import com.example.potikorn.testcoopapp.presenter.MainPresenter
 import com.example.potikorn.testcoopapp.presenter.TelevisionPresenter
+import com.github.ivbaranov.mfb.MaterialFavoriteButton
 import kotlinx.android.synthetic.main.activity_main_navigation.*
 import kotlinx.android.synthetic.main.app_bar_main_navigation.*
 import kotlinx.android.synthetic.main.content_main_navigation.*
 
-class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainContractor.View {
+class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainContractor.View,
+        MyRecyclerViewAdapterButton.ItemClickListener {
     private val movieAdapter: AdapterPoster by lazy { AdapterPoster(listOf()) }
     private val presenter: MainContractor.Presenter? by lazy { MainPresenter(this) }
     private val televisionAdapter: AdapterTelevision by lazy { AdapterTelevision(listOf()) }
@@ -39,15 +46,41 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         buttonMovie()
         moviePopular()
         movieTopRated()
+        image.load(BaseUrl.baseUrlImageMovie + getString(R.string.movie_tail_path))
+        adapterButtonRecycler?.setClickListener(this)
 
-
+        val toolbarFavorite = MaterialFavoriteButton.Builder(this) //
+                .favorite(true)
+                .color(MaterialFavoriteButton.STYLE_WHITE)
+                .type(MaterialFavoriteButton.STYLE_HEART)
+                .rotationDuration(800)
+                .create()
+        toolbar.addView(toolbarFavorite)
+        toolbarFavorite.setOnFavoriteChangeListener { buttonView, favorite ->
+            Snackbar.make(buttonView, getString(R.string.toolbar_favorite_snack) + favorite,
+                    Snackbar.LENGTH_SHORT).show()}
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu) }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.search) {
+            startActivity(Intent(this , SearchActivity::class.java))
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left) }
+        return super.onOptionsItemSelected(item) }
+
+    companion object {
+        const val YOU_HEAD_PATH ="https://i.ytimg.com/vi/"
+        const val YOU_TAIL = "/mqdefault.jpg"
+    }
 
     override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
-        arr?.let { movieAdapter.setItem(it) }
-        arrTv?.let { it1 -> televisionAdapter.setItem(it1) }
-    }
+        arrTv?.let { televisionAdapter.setItem(it) }
+        arr?.let { movieAdapter.setItem(it)} }
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -64,7 +97,6 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         return true
     }
 
-
     private fun buttonMovie(){
         var animalNames: ArrayList<String> = ArrayList()
         animalNames.add("Movie")
@@ -73,24 +105,22 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         val horizontalLayoutManager = LinearLayoutManager(this@MainNavigation, LinearLayoutManager.HORIZONTAL, false)
         moviesButton.layoutManager = horizontalLayoutManager
         adapterButtonRecycler = MyRecyclerViewAdapterButton(this, animalNames)
-        moviesButton.adapter = adapterButtonRecycler
-
-    }
+        moviesButton.adapter = adapterButtonRecycler }
 
     private fun moviePopular(){
         listMovies.apply {
             layoutManager = LinearLayoutManager(this@MainNavigation, LinearLayoutManager.HORIZONTAL, false)
-            adapter = movieAdapter
-        }
-    }
+            adapter = televisionAdapter } }
     
     private fun movieTopRated(){
         listMoviesTop.apply {
             layoutManager = LinearLayoutManager(this@MainNavigation, LinearLayoutManager.HORIZONTAL, false)
-            adapter = televisionAdapter
-        }
+            adapter = movieAdapter } }
 
-    }
+    override fun onItemClick(view: View, position: Int) {
+        when (position) {
+            0 -> startActivity(Intent(this , DetailsTypeMovie::class.java))
+            1 -> { }
+            2 -> { } }
+    } }
 
-
-}
