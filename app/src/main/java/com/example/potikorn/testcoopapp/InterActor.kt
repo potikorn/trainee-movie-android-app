@@ -5,8 +5,7 @@ import com.example.potikorn.testcoopapp.models.YouVidData
 
 interface InterActor{
     interface OnFinishedListener{
-        fun onSuccess(results:List<Movie>?=null,resultTv:List<Television>?=null,resultsYoutube: List<YouVidData>?=null)
-    }
+        fun onSuccess(results:List<Movie>?=null,resultTv:List<Television>?=null,resultsYoutube: List<YouVidData>?=null) }
     interface ActData{
         fun callDataFromSearch(key:String , callback: OnFinishedListener)
         fun callNowPlayData(callback: OnFinishedListener)

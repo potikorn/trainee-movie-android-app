@@ -9,8 +9,7 @@ import com.example.potikorn.testcoopapp.models.YouVidData
 
 class MainPresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListener {
     override fun onSuccess(results: List<Movie>?, resultTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
-        view?.callBackData(results)
-    }
+        view?.callBackData(results) }
 
     private val act: InterActor.ActData by lazy { InterArty() }
 

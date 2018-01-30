@@ -21,11 +21,7 @@ class ScrollingActivity : AppCompatActivity() {
                     .replace(R.id.containerFragment, FragmentMovie() , "")
                     .commit() }
         setImageViewScrolling()
-
-        fab.setOnClickListener { _ ->startActivity(Intent(this , SearchActivity::class.java))
-        }
-
-    }
+        fab.setOnClickListener { _ ->startActivity(Intent(this , SearchActivity::class.java)) } }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -40,7 +36,6 @@ class ScrollingActivity : AppCompatActivity() {
                         .commit()
                 return@OnNavigationItemSelectedListener true } }
         false }
-
     private fun setImageViewScrolling(){ Glide.with(this).load(BaseUrl.baseUrlImageMovie+"/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg").into(imageViewScrolling) }
 
 }

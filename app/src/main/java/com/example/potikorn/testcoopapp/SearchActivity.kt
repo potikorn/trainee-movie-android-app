@@ -17,8 +17,7 @@ class SearchActivity : AppCompatActivity(), MainContractor.View {
     private val movieAdapter: AdapterPoster by lazy { AdapterPoster(listOf()) }
 
     override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
-        arr?.let { movieAdapter.setItem(it) }
-    }
+        arr?.let { movieAdapter.setItem(it) } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +29,5 @@ class SearchActivity : AppCompatActivity(), MainContractor.View {
             if (keyEvent.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 searchPresenter.callBackData(etSearch.text.toString())
                 true
-            } else false
-        }
-    }
+            } else false } }
 }
