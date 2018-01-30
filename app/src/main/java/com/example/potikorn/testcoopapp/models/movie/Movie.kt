@@ -1,16 +1,16 @@
-package com.example.potikorn.testcoopapp.models
+package com.example.potikorn.testcoopapp.models.movie
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import org.parceler.Parcel
 
-@Parcel //TODO remove private when we need to use it
+@Parcel //TODO upcoming , now play data , pop data ,top rate
 data class Movie(@SerializedName("vote_average") val vote_average: String? = null
                  , @SerializedName("title") val title: String? = null
                  , @SerializedName("poster_path") val poster: String? = null
                  , @SerializedName("backdrop_path") val backdrop: String? = null
                  , @SerializedName("overview") val overview: String? = null
-                 , @SerializedName("release_date") private val release_date: String? = null) : Parcelable {
+                 , @SerializedName("release_date") val release_date: String? = null) : Parcelable {
     constructor(parcel: android.os.Parcel) : this(
             parcel.readString(),
             parcel.readString(),
@@ -39,4 +39,11 @@ data class Movie(@SerializedName("vote_average") val vote_average: String? = nul
 }
 
 @Parcel
-data class MovieList(@SerializedName("results") var results: List<Movie>? = null)
+data class MovieList(@SerializedName("results") var results: List<Movie>? = null
+                     , @SerializedName("page") val page: String? = null
+                     , @SerializedName("total_pages") var total_pages: String? = null)
+@Parcel
+data class MovieType(@SerializedName("id") val type_id :String , @SerializedName("name") val type_name : String)
+
+@Parcel
+data class MovieTypeList(@SerializedName("genres")var type : List<MovieType>)

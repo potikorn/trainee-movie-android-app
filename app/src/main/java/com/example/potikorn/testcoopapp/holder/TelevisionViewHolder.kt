@@ -6,7 +6,7 @@ import android.view.View
 import com.example.potikorn.testcoopapp.DetailsMovie
 import com.example.potikorn.testcoopapp.DetailsTelevision
 import com.example.potikorn.testcoopapp.load
-import com.example.potikorn.testcoopapp.models.Television
+import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.network.BaseUrl
 import kotlinx.android.synthetic.main.list_item_movie.view.*
 

@@ -1,7 +1,7 @@
 package com.example.potikorn.testcoopapp.network
 
-import com.example.potikorn.testcoopapp.models.MovieList
-import com.example.potikorn.testcoopapp.models.TelevisionList
+import com.example.potikorn.testcoopapp.models.movie.MovieList
+import com.example.potikorn.testcoopapp.models.television.TelevisionList
 import com.example.potikorn.testcoopapp.models.VidListFOF
 import retrofit2.Call
 import retrofit2.http.GET
