@@ -13,10 +13,6 @@
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".DetailsMovie">
             <meta-data
@@ -33,6 +29,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.potikorn.testcoopapp.ScrollingActivity" />
         </activity>
+
+        <activity
+            android:name=".MainNavigation"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

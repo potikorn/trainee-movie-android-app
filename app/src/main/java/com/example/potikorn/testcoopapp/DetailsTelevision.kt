@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
-import com.bumptech.glide.Glide
 import com.example.potikorn.testcoopapp.adapter.AdapterYoutube
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.Movie

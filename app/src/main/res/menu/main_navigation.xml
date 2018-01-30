@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:titleCondensed="50"
+        android:id="@+id/action_Home"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_Event"
+        android:orderInCategory="100"
+        android:title="@string/action_settings2"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_About"
+        android:orderInCategory="100"
+        android:title="@string/action_settings3"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_Newes"
+        android:orderInCategory="100"
+        android:title="@string/action_settings4"
+        app:showAsAction="never" />
+
+
+</menu>

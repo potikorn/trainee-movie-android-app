@@ -13,9 +13,6 @@ class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun onBind(movie: Movie) {
         itemView.apply {
-            title.text = movie.title
-            rating.text = movie.vote_average.toString()
-            ratingBar.rating = movie.vote_average?.toFloat()!!.div(3)
             movies_layout.setOnClickListener {
                 itemView.context.startActivity(Intent(
                         itemView.context,
