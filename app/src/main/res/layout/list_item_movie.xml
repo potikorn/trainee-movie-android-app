@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tool="http://schemas.android.com/tools"
     android:id="@+id/movies_layout"
@@ -42,10 +41,10 @@
             android:layout_below="@+id/title"
             android:layout_marginLeft="180sp"
             android:layout_marginTop="40sp"
-            android:numStars="3"
-            android:onClick="btnRating"
+            android:numStars="5"
             android:padding="7dp"
             android:stepSize="1.0"
+            style="?android:attr/ratingBarStyleIndicator"
             android:theme="@style/RatingBar" />
 
         <android.support.v7.widget.AppCompatTextView

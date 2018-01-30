@@ -1,5 +1,4 @@
 package com.example.potikorn.testcoopapp
-
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
