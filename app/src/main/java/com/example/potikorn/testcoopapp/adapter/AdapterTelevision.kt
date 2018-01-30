@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.potikorn.testcoopapp.R
 import com.example.potikorn.testcoopapp.holder.TelevisionViewHolder
-import com.example.potikorn.testcoopapp.models.Television
+import com.example.potikorn.testcoopapp.models.television.Television
 
 class AdapterTelevision(private var television: List<Television>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

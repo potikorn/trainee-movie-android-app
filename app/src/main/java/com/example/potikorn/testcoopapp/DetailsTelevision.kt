@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
-import com.bumptech.glide.Glide
 import com.example.potikorn.testcoopapp.adapter.AdapterYoutube
 import com.example.potikorn.testcoopapp.contracter.MainContractor
-import com.example.potikorn.testcoopapp.models.Movie
-import com.example.potikorn.testcoopapp.models.Television
+import com.example.potikorn.testcoopapp.models.movie.Movie
+import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.models.YouVidData
 import com.example.potikorn.testcoopapp.network.BaseUrl
 import com.example.potikorn.testcoopapp.presenter.YoutubePresenter

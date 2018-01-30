@@ -1,4 +1,4 @@
-package com.example.potikorn.testcoopapp.models
+package com.example.potikorn.testcoopapp.models.television
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -37,4 +37,6 @@ data class Television(@SerializedName("id") val id: String, @SerializedName("nam
 }
 
 @Parcel
-data class TelevisionList(@SerializedName("results") var results: List<Television>? = null)
+data class TelevisionList(@SerializedName("results") var results: List<Television>? = null
+                          , @SerializedName("page") val page: String? = null
+                          , @SerializedName("total_pages") var total_pages: String? = null)
