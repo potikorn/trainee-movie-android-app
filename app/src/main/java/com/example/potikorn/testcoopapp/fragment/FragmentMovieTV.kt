@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import com.example.potikorn.testcoopapp.R
 import com.example.potikorn.testcoopapp.adapter.AdapterTelevision
 import com.example.potikorn.testcoopapp.contracter.MainContractor
-import com.example.potikorn.testcoopapp.models.Movie
-import com.example.potikorn.testcoopapp.models.Television
+import com.example.potikorn.testcoopapp.models.movie.Movie
+import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.models.YouVidData
 import com.example.potikorn.testcoopapp.presenter.TelevisionPresenter
 import kotlinx.android.synthetic.main.fragment_fragment_movie.*

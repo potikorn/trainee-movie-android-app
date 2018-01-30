@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
 import com.example.potikorn.testcoopapp.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.contracter.MainContractor
-import com.example.potikorn.testcoopapp.models.Movie
-import com.example.potikorn.testcoopapp.models.Television
+import com.example.potikorn.testcoopapp.models.movie.Movie
+import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.models.YouVidData
 import com.example.potikorn.testcoopapp.presenter.SearchPresenter
 import kotlinx.android.synthetic.main.activity_search.*

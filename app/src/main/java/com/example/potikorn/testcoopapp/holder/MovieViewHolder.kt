@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.example.potikorn.testcoopapp.DetailsMovie
 import com.example.potikorn.testcoopapp.load
-import com.example.potikorn.testcoopapp.models.Movie
+import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.network.BaseUrl
 import kotlinx.android.synthetic.main.list_item_movie.view.*
 

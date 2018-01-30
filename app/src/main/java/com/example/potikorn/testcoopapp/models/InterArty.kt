@@ -1,6 +1,8 @@
 package com.example.potikorn.testcoopapp.models
 
 import com.example.potikorn.testcoopapp.InterActor
+import com.example.potikorn.testcoopapp.models.movie.MovieList
+import com.example.potikorn.testcoopapp.models.television.TelevisionList
 import com.example.potikorn.testcoopapp.network.ApiManager
 import com.example.potikorn.testcoopapp.network.BaseUrl
 import retrofit2.Call
