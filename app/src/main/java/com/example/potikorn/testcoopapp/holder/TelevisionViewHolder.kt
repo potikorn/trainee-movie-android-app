@@ -17,7 +17,5 @@ class TelevisionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             TV.load(BaseUrl.baseUrlImageMovie + television.poster_path)
             movies_layout.setOnClickListener {
                 itemView.context.startActivity(Intent(itemView.context, DetailsTelevision::class.java).putExtra(DetailsMovie.Key, television))
-            }
-        }
-    }
+            } } }
 }

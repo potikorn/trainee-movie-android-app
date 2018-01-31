@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.potikorn.testcoopapp.R
 
-
 class MyRecyclerViewAdapterButton (context: Context, animals: List<String>) : RecyclerView.Adapter<MyRecyclerViewAdapterButton.ViewHolder>() {
     private var mAnimals = emptyList<String>()
     private val mInflater: LayoutInflater = LayoutInflater.from(context)
     private var mClickListener: ItemClickListener? = null
-    init {
-        this.mAnimals = animals
-    }
+    init { this.mAnimals = animals }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = mInflater.inflate(R.layout.recyclerview_item, parent, false)
@@ -26,27 +23,18 @@ class MyRecyclerViewAdapterButton (context: Context, animals: List<String>) : Re
         holder.myTextView.text = animal
     }
 
-    override fun getItemCount(): Int {
-        return mAnimals.size
-    }
+    override fun getItemCount(): Int = mAnimals.size
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var myTextView:TextView = itemView.findViewById(R.id.tvAnimalName)
 
-        init {
-            itemView.setOnClickListener(this)
-        }
+        init { itemView.setOnClickListener(this) }
 
-        override fun onClick(view: View) {
-            if (mClickListener != null) mClickListener?.onItemClick(view, adapterPosition)
-        }
-    }
+        override fun onClick(view: View) { if (mClickListener != null) mClickListener?.onItemClick(view, adapterPosition) } }
 
     fun setClickListener(itemClickListener: ItemClickListener) {
-        this.mClickListener = itemClickListener
-    }
+        this.mClickListener = itemClickListener }
 
     interface ItemClickListener {
-        fun onItemClick(view: View, position: Int)
-    }
+        fun onItemClick(view: View, position: Int) }
 }

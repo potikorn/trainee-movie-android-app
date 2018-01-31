@@ -10,7 +10,6 @@ import com.example.potikorn.testcoopapp.network.BaseUrl
 import kotlinx.android.synthetic.main.list_item_movie.view.*
 
 class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
     fun onBind(movie: Movie) {
         itemView.apply {
             movies_layout.setOnClickListener {

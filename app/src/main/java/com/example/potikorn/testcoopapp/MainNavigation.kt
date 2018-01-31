@@ -49,7 +49,7 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         image.load(BaseUrl.baseUrlImageMovie + getString(R.string.movie_tail_path))
         adapterButtonRecycler?.setClickListener(this)
 
-        val toolbarFavorite = MaterialFavoriteButton.Builder(this) //
+        val toolbarFavorite = MaterialFavoriteButton.Builder(this)
                 .favorite(true)
                 .color(MaterialFavoriteButton.STYLE_WHITE)
                 .type(MaterialFavoriteButton.STYLE_HEART)
@@ -80,7 +80,6 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
     override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
         arrTv?.let { televisionAdapter.setItem(it) }
         arr?.let { movieAdapter.setItem(it)} }
-
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
