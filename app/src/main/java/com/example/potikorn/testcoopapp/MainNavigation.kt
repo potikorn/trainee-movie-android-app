@@ -14,6 +14,8 @@ import com.example.potikorn.testcoopapp.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.adapter.AdapterTelevision
 import com.example.potikorn.testcoopapp.adapter.MyRecyclerViewAdapterButton
 import com.example.potikorn.testcoopapp.contracter.MainContractor
+import com.example.potikorn.testcoopapp.fragment.FragmentMovie
+import com.example.potikorn.testcoopapp.fragment.FragmentMovieTV
 import com.example.potikorn.testcoopapp.models.YouVidData
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.models.television.Television
@@ -36,16 +38,13 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_navigation)
         setSupportActionBar(toolbar)
-        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close)
+        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
         presenter?.callBackData()
         presenterTV?.callBackData()
         buttonMovie()
-        moviePopular()
-        movieTopRated()
         image.load(BaseUrl.baseUrlImageMovie + getString(R.string.movie_tail_path))
         adapterButtonRecycler?.setClickListener(this)
 
@@ -59,6 +58,12 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         toolbarFavorite.setOnFavoriteChangeListener { buttonView, favorite ->
             Snackbar.make(buttonView, getString(R.string.toolbar_favorite_snack) + favorite,
                     Snackbar.LENGTH_SHORT).show()}
+
+        if (savedInstanceState != null) return
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.containerFragment, FragmentMovie(), "")
+                .commit()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -106,20 +111,16 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         adapterButtonRecycler = MyRecyclerViewAdapterButton(this, animalNames)
         moviesButton.adapter = adapterButtonRecycler }
 
-    private fun moviePopular(){
-        listMovies.apply {
-            layoutManager = LinearLayoutManager(this@MainNavigation, LinearLayoutManager.HORIZONTAL, false)
-            adapter = televisionAdapter } }
-    
-    private fun movieTopRated(){
-        listMoviesTop.apply {
-            layoutManager = LinearLayoutManager(this@MainNavigation, LinearLayoutManager.HORIZONTAL, false)
-            adapter = movieAdapter } }
-
     override fun onItemClick(view: View, position: Int) {
         when (position) {
-            0 -> startActivity(Intent(this , DetailsTypeMovie::class.java))
-            1 -> { }
-            2 -> { } }
+            0 -> {supportFragmentManager.beginTransaction()
+                    .replace(R.id.containerFragment, FragmentMovie(), "")
+                    .commit()  }
+            1 -> {supportFragmentManager.beginTransaction()
+                    .replace(R.id.containerFragment, FragmentMovieTV(), "")
+                    .commit() }
+            2 -> {supportFragmentManager.beginTransaction()
+                    .replace(R.id.containerFragment, FragmentMovie(), "")
+                    .commit() } }
     } }
 

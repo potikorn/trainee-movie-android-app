@@ -1,7 +1,7 @@
 package com.example.potikorn.testcoopapp
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.example.potikorn.testcoopapp.adapter.AdapterDetails
 import com.example.potikorn.testcoopapp.contracter.MainContractor
@@ -11,7 +11,7 @@ import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.presenter.MainPresenter
 import kotlinx.android.synthetic.main.fragment_fragment_movie.*
 
-class DetailsTypeMovie : AppCompatActivity(), MainContractor.View {
+class MovieSeeAll : AppCompatActivity(), MainContractor.View {
     private val movieAdapter: AdapterDetails by lazy { AdapterDetails(listOf()) }
     private var presenter: MainContractor.Presenter? = MainPresenter(this)
     override fun onCreate(savedInstanceState: Bundle?) {
