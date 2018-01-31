@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#2e2d2d</color>
     <color name="colorPrimaryDark">#262525</color>
-    <color name="colorAccent">#fffa6b</color>
+    <color name="colorAccent">#2d2d2b</color>
 
     <color name="colorBlack">#555555</color>
     <color name="colorWhite">#FFFFFF</color>
@@ -11,7 +11,7 @@
     <color name="colorGreyLight">#8A8A8A</color>
     <color name="white">#FFFFFF</color>
 
-    <color name="indigo">#f7d426</color>
-    <color name="pink">#f2d729</color>
+    <color name="indigo">#f4d433</color>
+    <color name="pink">#fae352</color>
     <color name="album_title">#4c4c4c</color>
 </resources>

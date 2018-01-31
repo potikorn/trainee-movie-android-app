@@ -11,13 +11,11 @@ class AdapterTelevision(private var television: List<Television>) : RecyclerView
 
     fun setItem(items: List<Television>) {
         television = items
-        notifyDataSetChanged()
-    }
+        notifyDataSetChanged() }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
-        return TelevisionViewHolder(view)
-    }
+        return TelevisionViewHolder(view) }
 
     override fun getItemCount(): Int = television.size
 

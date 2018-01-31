@@ -4,11 +4,10 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <string name="title_home">Movie</string>
     <string name="title_dashboard">Movie/TV</string>
-    <string name="title_activity_main_fragmentation"></string>
+    <string name="title_activity_main_fragmentation">Movie</string>
     <string name="youtube_url">vnd.youtube:</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_scrolling">Movie</string>
-    <string name="action_settings">Settings</string>
     <string name="movieposter">movieposter</string>
     <string name="moviePoster">moviePoster</string>
     <string name="app_poster">app-poster</string>
@@ -20,4 +19,11 @@
     <string name="imax_text">IMAX</string>
     <string name="youtube_image_view_text">ัyoutube-image-view</string>
     <string name="movie_tail_path">/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg</string>
+    <string name="action_settings">Home</string>
+    <string name="action_settings2">Event</string>
+    <string name="action_settings3">About</string>
+    <string name="action_settings4">News</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="toolbar_favorite_snack">"Toolbar favorite clicked: "</string>
 </resources>

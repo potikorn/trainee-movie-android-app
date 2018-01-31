@@ -1,5 +1,4 @@
 package com.example.potikorn.testcoopapp.holder
-
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -7,11 +6,15 @@ import com.example.potikorn.testcoopapp.DetailsMovie
 import com.example.potikorn.testcoopapp.load
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.network.BaseUrl
-import kotlinx.android.synthetic.main.list_item_movie.view.*
+import kotlinx.android.synthetic.main.list_item_movie_details.view.*
 
-class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class MovieViewDetails(view: View) : RecyclerView.ViewHolder(view) {
+
     fun onBind(movie: Movie) {
         itemView.apply {
+            title.text = movie.title
+            rating.text = movie.vote_average.toString()
+            ratingBar.rating = movie.vote_average?.toFloat()!!.div(3)
             movies_layout.setOnClickListener {
                 itemView.context.startActivity(Intent(
                         itemView.context,

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
+import com.example.potikorn.testcoopapp.adapter.AdapterDetails
 import com.example.potikorn.testcoopapp.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.movie.Movie
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_search.*
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
 class SearchActivity : AppCompatActivity(), MainContractor.View {
     private val searchPresenter: MainContractor.Presenter = SearchPresenter(this)
-    private val movieAdapter: AdapterPoster by lazy { AdapterPoster(listOf()) }
+    private val movieAdapter: AdapterDetails by lazy { AdapterDetails(listOf()) }
 
     override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
         arr?.let { movieAdapter.setItem(it) }

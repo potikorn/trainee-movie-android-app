@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="test2.hppavilidn.example.com.desingapprider.MainNavigation"
+        tools:showIn="@layout/app_bar_main_navigation">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorBlack" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/moviesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            android:id="@+id/textMoviePopula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/moviesButton"
+            android:layout_marginTop="2dp"
+            android:padding="10sp"
+            android:text="MoviePopula:"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listMovies"
+            android:layout_width="match_parent"
+            android:layout_height="195dp"
+            android:layout_below="@+id/textMoviePopula"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            android:id="@+id/textMovieTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/listMovies"
+            android:padding="10sp"
+            android:text="MovieToprated:"
+            android:textStyle="bold" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listMoviesTop"
+            android:layout_width="match_parent"
+            android:layout_height="195dp"
+            android:layout_below="@+id/textMovieTop"
+            android:layout_marginTop="5dp" />
+
+
+    </RelativeLayout>
+</ScrollView>
