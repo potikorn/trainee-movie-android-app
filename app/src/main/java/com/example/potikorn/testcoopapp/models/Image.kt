@@ -23,8 +23,7 @@ data class Image(@SerializedName("file_path") val file_path: String) : Parcelabl
 
 @Parcel
 data class Poster(@SerializedName("file_path") val file_path: String) : Parcelable {
-    constructor(parcel: android.os.Parcel) : this(parcel.readString()) {
-    }
+    constructor(parcel: android.os.Parcel) : this(parcel.readString())
 
     override fun writeToParcel(parcel: android.os.Parcel, flags: Int) {
         parcel.writeString(file_path)
@@ -46,5 +45,5 @@ data class Poster(@SerializedName("file_path") val file_path: String) : Parcelab
 }
 
 @Parcel
-data class MovieImageList(@SerializedName("backdrops") val backdrops: List<Image>
+data class ImageList(@SerializedName("backdrops") val backdrops: List<Image>
                           , @SerializedName("posters") val poster: List<Poster>)
