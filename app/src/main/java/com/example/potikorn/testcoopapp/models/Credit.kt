@@ -36,11 +36,35 @@ data class CreditActor(@SerializedName("cast_id") val cast_id: String
     }
 }
 
+@Parcel
 data class Crew(@SerializedName("job") val job: String, @SerializedName("name") val name: String
-                , @SerializedName("profile_path") val profile_path: String)
+                , @SerializedName("profile_path") val profile_path: String) : Parcelable {
+    constructor(parcel: android.os.Parcel) : this(
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString())
+
+    override fun writeToParcel(parcel: android.os.Parcel, flags: Int) {
+        parcel.writeString(job)
+        parcel.writeString(name)
+        parcel.writeString(profile_path)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Crew> {
+        override fun createFromParcel(parcel: android.os.Parcel): Crew {
+            return Crew(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Crew?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
 
 @Parcel
-data class ListCaster(@SerializedName("cast") val cast_data: List<CreditActor>)
-
-@Parcel
-data class ListCrew(@SerializedName("crew") val cast_data: List<CreditActor>)
+data class CreditList(@SerializedName("cast") val cast_data: List<CreditActor>
+                    ,@SerializedName("crew") val crew_data: List<Crew>)

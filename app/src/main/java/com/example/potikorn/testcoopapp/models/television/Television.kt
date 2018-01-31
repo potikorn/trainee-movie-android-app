@@ -40,3 +40,9 @@ data class Television(@SerializedName("id") val id: String, @SerializedName("nam
 data class TelevisionList(@SerializedName("results") var results: List<Television>? = null
                           , @SerializedName("page") val page: String? = null
                           , @SerializedName("total_pages") var total_pages: String? = null)
+
+@Parcel
+data class TelevisionType(@SerializedName("id") val type_id :String , @SerializedName("name") val type_name : String)
+
+@Parcel
+data class TelevisionTypeList(@SerializedName("genres")var type : List<TelevisionType>)

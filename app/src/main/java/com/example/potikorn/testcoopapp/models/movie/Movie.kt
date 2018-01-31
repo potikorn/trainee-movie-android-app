@@ -42,8 +42,15 @@ data class Movie(@SerializedName("vote_average") val vote_average: String? = nul
 data class MovieList(@SerializedName("results") var results: List<Movie>? = null
                      , @SerializedName("page") val page: String? = null
                      , @SerializedName("total_pages") var total_pages: String? = null)
-@Parcel
-data class MovieType(@SerializedName("id") val type_id :String , @SerializedName("name") val type_name : String)
 
 @Parcel
-data class MovieTypeList(@SerializedName("genres")var type : List<MovieType>)
+data class MovieType(@SerializedName("id") val type_id: String, @SerializedName("name") val type_name: String)
+
+@Parcel
+data class MovieTypeList(@SerializedName("genres") var type: List<MovieType>)
+
+@Parcel
+data class MovieVideoPath(@SerializedName("key") val key: String, @SerializedName("name") val name: String)
+
+@Parcel
+data class MovieVideoPathList(@SerializedName("results") val results: List<MovieVideoPath>)
