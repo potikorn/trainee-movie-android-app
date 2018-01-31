@@ -1,19 +1,27 @@
 package com.example.potikorn.testcoopapp
 
-import com.example.potikorn.testcoopapp.models.movie.Movie
-import com.example.potikorn.testcoopapp.models.television.Television
-import com.example.potikorn.testcoopapp.models.YouVidData
-
 interface InterActor {
     interface OnFinishedListener {
-        fun onSuccess(results: List<Movie>? = null, resultTv: List<Television>? = null, resultsYoutube: List<YouVidData>? = null)
+        fun <T> onSuccess(t: T)
     }
 
     interface ActData {
-        fun callDataFromSearch(key: String, callback: OnFinishedListener)
-        fun callNowPlayData(callback: OnFinishedListener)
+        fun callYoutubeData(key: String, callback: OnFinishedListener)
         fun callTVDataFromSearch(key: String, callback: OnFinishedListener)
         fun callNowPlayTVData(callback: OnFinishedListener)
-        fun callYoutubeData(key: String, callback: OnFinishedListener)
+        fun callTvOnTheAir(callback: OnFinishedListener)
+        fun callTvPopular(callback: OnFinishedListener)
+        fun callTvTopRate(callback: OnFinishedListener)
+        fun callTvByGenres(genres : String , callback: OnFinishedListener)
+        fun callMoviePopular(callback: OnFinishedListener)
+        fun callMovieTopRate(callback: OnFinishedListener)
+        fun callMovieUpcoming(callback: OnFinishedListener)
+        fun callMovieNTelevisionCredit(id: String, callback: OnFinishedListener)
+        fun callMovieByGenres(genres : String , callback: OnFinishedListener)
+        fun callMovieImage(movieId: String, callback: OnFinishedListener)
+        fun callGenres(callback: OnFinishedListener)
+        fun callVideoPath(movieId: String, callback: OnFinishedListener)
+        fun callDataFromSearch(key: String, callback: OnFinishedListener)
+        fun callNowPlayData(callback: OnFinishedListener)
     }
 }
