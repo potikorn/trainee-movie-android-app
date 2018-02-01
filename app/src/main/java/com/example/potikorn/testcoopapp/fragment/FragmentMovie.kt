@@ -1,5 +1,5 @@
 package com.example.potikorn.testcoopapp.fragment
-import android.content.Intent
+
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -13,32 +13,31 @@ import com.example.potikorn.testcoopapp.models.YouVidData
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.presenter.MainPresenter
-import com.example.potikorn.testcoopapp.MovieSeeAll
-import kotlinx.android.synthetic.main.fragment_fragment_movie.*
+import kotlinx.android.synthetic.main.fragment_theme.*
 
 class FragmentMovie : Fragment(), MainContractor.View {
 
     private val movieAdapter: AdapterPoster by lazy { AdapterPoster(listOf()) }
     private var presenter: MainContractor.Presenter? = MainPresenter(this)
     override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
-        arr?.let { movieAdapter.setItem(it) } }
+        arr?.let { movieAdapter.setItem(it) }
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? =
-            inflater!!.inflate(R.layout.fragment_fragment_movie, container, false)
+            inflater!!.inflate(R.layout.fragment_theme, container, false)
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        moviesList?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        moviesList.adapter = movieAdapter
-        moviesList2.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        moviesList2.adapter = movieAdapter
-        textSeeAll.setOnClickListener {
-            val intent = Intent(context, MovieSeeAll::class.java)
-            startActivity(intent) } }
+        televisionList?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        televisionList.adapter = movieAdapter
+        televisionList2.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        televisionList2.adapter = movieAdapter
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter?.callBackData() }
+        presenter?.callBackData()
+    }
 
 }

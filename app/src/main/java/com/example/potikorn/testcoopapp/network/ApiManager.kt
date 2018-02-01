@@ -3,9 +3,11 @@ package com.example.potikorn.testcoopapp.network
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 
+@Suppress("UNREACHABLE_CODE")
 class ApiManager {
 
     companion object Factory {
@@ -18,6 +20,13 @@ class ApiManager {
                     .build().create(BaseService::class.java)
             return serviceFactory
         }
+
+        fun createRx() : BaseService?{
+            val retrofit = Retrofit.Builder().addCallAdapterFactory(RxJava2CallAdapterFactory.create()).addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(BaseUrl.baseUrl).client(setOkHttpClient()).build()
+            return retrofit.create(BaseService::class.java)
+        }
+
 
         private fun setOkHttpClient(): OkHttpClient {
             val interceptor = HttpLoggingInterceptor()

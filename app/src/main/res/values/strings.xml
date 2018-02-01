@@ -26,6 +26,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="toolbar_favorite_snack">"Toolbar favorite clicked: "</string>
-    <string name="popula">Popula:</string>
-    <string name="toprated">Toprated:</string>
+    <string name="popular">Top 5 Popular:</string>
+    <string name="top_rate">Top 5 Rating:</string>
 </resources>

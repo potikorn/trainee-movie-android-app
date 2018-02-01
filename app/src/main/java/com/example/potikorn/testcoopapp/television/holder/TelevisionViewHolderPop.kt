@@ -1,4 +1,4 @@
-package com.example.potikorn.testcoopapp.holder
+package com.example.potikorn.testcoopapp.television.holder
 
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
@@ -10,7 +10,7 @@ import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.network.BaseUrl
 import kotlinx.android.synthetic.main.list_item_movie.view.*
 
-class TelevisionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class TelevisionViewHolderPop(view: View) : RecyclerView.ViewHolder(view) {
 
     fun onBind(television: Television) {
         itemView.apply {
