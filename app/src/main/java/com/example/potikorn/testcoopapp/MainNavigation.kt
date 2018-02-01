@@ -10,29 +10,17 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.example.potikorn.testcoopapp.adapter.AdapterPoster
-import com.example.potikorn.testcoopapp.adapter.AdapterTelevision
 import com.example.potikorn.testcoopapp.adapter.MyRecyclerViewAdapterButton
-import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.fragment.FragmentMovie
 import com.example.potikorn.testcoopapp.fragment.FragmentMovieTV
-import com.example.potikorn.testcoopapp.models.YouVidData
-import com.example.potikorn.testcoopapp.models.movie.Movie
-import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.network.BaseUrl
-import com.example.potikorn.testcoopapp.presenter.MainPresenter
-import com.example.potikorn.testcoopapp.presenter.TelevisionPresenter
 import com.github.ivbaranov.mfb.MaterialFavoriteButton
 import kotlinx.android.synthetic.main.activity_main_navigation.*
 import kotlinx.android.synthetic.main.app_bar_main_navigation.*
 import kotlinx.android.synthetic.main.content_main_navigation.*
 
-class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainContractor.View,
+class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
         MyRecyclerViewAdapterButton.ItemClickListener {
-    private val movieAdapter: AdapterPoster by lazy { AdapterPoster(listOf()) }
-    private val presenter: MainContractor.Presenter? by lazy { MainPresenter(this) }
-    private val televisionAdapter: AdapterTelevision by lazy { AdapterTelevision(listOf()) }
-    private val presenterTV: MainContractor.Presenter? by lazy { TelevisionPresenter(this) }
     private var adapterButtonRecycler: MyRecyclerViewAdapterButton? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +30,6 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-        presenter?.callBackData()
-        presenterTV?.callBackData()
         buttonMovie()
         image.load(BaseUrl.baseUrlImageMovie + getString(R.string.movie_tail_path))
         adapterButtonRecycler?.setClickListener(this)
@@ -81,10 +67,6 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         const val YOU_HEAD_PATH ="https://i.ytimg.com/vi/"
         const val YOU_TAIL = "/mqdefault.jpg"
     }
-
-    override fun callBackData(arr: List<Movie>?, arrTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
-        arrTv?.let { televisionAdapter.setItem(it) }
-        arr?.let { movieAdapter.setItem(it)} }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

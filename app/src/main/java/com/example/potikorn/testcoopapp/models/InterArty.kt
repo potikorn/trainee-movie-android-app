@@ -1,5 +1,6 @@
 package com.example.potikorn.testcoopapp.models
 
+import android.util.Log
 import com.example.potikorn.testcoopapp.InterActor
 import com.example.potikorn.testcoopapp.models.movie.MovieList
 import com.example.potikorn.testcoopapp.models.movie.MovieTypeList
@@ -9,14 +10,14 @@ import com.example.potikorn.testcoopapp.models.television.TelevisionTypeList
 import com.example.potikorn.testcoopapp.network.ApiManager
 import com.example.potikorn.testcoopapp.network.BaseRetro
 import com.example.potikorn.testcoopapp.network.BaseUrl
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
+import retrofit2.Response
 
 class InterArty : InterActor.ActData {
     override fun callMovieFilterByGenres(genres_id: String, callback: InterActor.OnFinishedListener) {
         BaseRetro<MovieList>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.selectMovieByGenres(genres_id), callback)
-    }
-
-    override fun callTelevisionFilterByGenres(genres_id: String, callback: InterActor.OnFinishedListener) {
-        BaseRetro<TelevisionList>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.selectTelevisionByGenres(genres_id), callback)
     }
 
     override fun callMovieCredit(id: String, callback: InterActor.OnFinishedListener) {
@@ -38,10 +39,20 @@ class InterArty : InterActor.ActData {
 
     }
 
-    override fun callTvGenres(callback: InterActor.OnFinishedListener) {
+    override fun callTvGenres(callback: InterActor.OnFinishedListenerTv) {
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.selectTelevisionGenres()?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<TelevisionTypeList>>() {
+                    override fun onComplete() {
+                    }
 
-        BaseRetro<TelevisionTypeList>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.selectTelevisionGenres(), callback)
+                    override fun onNext(t: Response<TelevisionTypeList>) {
+                        t.body()?.let { callback.onSuccessGenres(it) }
+                    }
 
+                    override fun onError(e: Throwable) {
+                    }
+                })
     }
 
     override fun callMovieVideoPath(movieId: String, callback: InterActor.OnFinishedListener) {
@@ -56,21 +67,43 @@ class InterArty : InterActor.ActData {
 
     }
 
-    override fun callTvPopular(callback: InterActor.OnFinishedListener) {
+    override fun callTvPopular(callback: InterActor.OnFinishedListenerTv) {
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.televisionPopular()?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<TelevisionList>>() {
+                    override fun onComplete() {
+                    }
 
-        BaseRetro<TelevisionList>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.televisionPopular(), callback)
+                    override fun onNext(t: Response<TelevisionList>) {
+                        Log.e("success data here", t.body()?.results.toString())
+                        t.body()?.let { callback.onSuccessPop(it) }
+                    }
 
+                    override fun onError(e: Throwable) {
+                    }
+                })
     }
 
-    override fun callTvTopRate(callback: InterActor.OnFinishedListener) {
+    override fun callTvTopRate(callback: InterActor.OnFinishedListenerTv) {
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.televisionTopRate()?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<TelevisionList>>() {
+                    override fun onComplete() {
+                    }
 
-        BaseRetro<TelevisionList>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.televisionTopRate(), callback)
+                    override fun onNext(t: Response<TelevisionList>) {
+                        Log.e("success data here", t.body()?.results.toString())
+                        t.body()?.let { callback.onSuccessTop(it) }
+                    }
 
+                    override fun onError(e: Throwable) {
+                    }
+                })
     }
 
     override fun callTvByGenres(genres: String, callback: InterActor.OnFinishedListener) {
 
-        BaseRetro<TelevisionTypeList>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.selectTelevisionGenres(), callback)
+        BaseRetro<TelevisionTypeList>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.selectTelevisionByGenres(genres), callback)
 
     }
 

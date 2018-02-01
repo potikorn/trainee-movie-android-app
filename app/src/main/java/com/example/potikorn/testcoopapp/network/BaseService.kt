@@ -8,7 +8,9 @@ import com.example.potikorn.testcoopapp.models.movie.MovieTypeList
 import com.example.potikorn.testcoopapp.models.movie.MovieVideoPathList
 import com.example.potikorn.testcoopapp.models.television.TelevisionList
 import com.example.potikorn.testcoopapp.models.television.TelevisionTypeList
+import io.reactivex.Observable
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -34,13 +36,13 @@ interface BaseService {
     fun televisionOnTheAir(): Call<TelevisionList>
 
     @GET("tv/popular?language=en-US&page=1")
-    fun televisionPopular(): Call<TelevisionList>
+    fun televisionPopular(): Observable<Response<TelevisionList>>
 
     @GET("tv/top_rated?language=en-US&page=1")
-    fun televisionTopRate(): Call<TelevisionList>
+    fun televisionTopRate(): Observable<Response<TelevisionList>>
 
     @GET("discover/tv?language=en-US&sort_by=vote_average.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false")
-    fun selectTelevisionByGenres(@Query("with_genres") query: String): Call<TelevisionList>
+    fun selectTelevisionByGenres(@Query("with_genres") query: String): Call<TelevisionTypeList>
 
     @GET("movie/popular?language=en-US&page=1")
     fun selectMoviePopular(): Call<MovieList>
@@ -67,7 +69,7 @@ interface BaseService {
     fun selectMovieGenres(): Call<MovieTypeList>
 
     @GET("genre/tv/list?language=en-US")
-    fun selectTelevisionGenres(): Call<TelevisionTypeList>
+    fun selectTelevisionGenres(): Observable<Response<TelevisionTypeList>>
 
     @GET("movie/{movie_id}/videos?language=en-US")
     fun selectMovieVideoPath(@Path("movie_id") query: String): Call<MovieVideoPathList>

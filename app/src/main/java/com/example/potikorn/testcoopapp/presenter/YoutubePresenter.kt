@@ -11,8 +11,8 @@ class YoutubePresenter(val view: MainContractor.View? = null) : MainContractor.P
     override fun <T> onSuccess(t: T) {
         view?.callBackData(resultsYoutube = (t as VidListFOF).results)
     }
-//    override fun onSuccess(results: List<Movie>?, resultTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
-//        view?.callBackData(results, resultTv , resultsYoutube)
+//    override fun onSuccessTop(results: List<Movie>?, resultTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
+//        view?.callBackPopularData(results, resultTv , resultsYoutube)
 //    }
 
     private val act: InterActor.ActData by lazy { InterArty() }
