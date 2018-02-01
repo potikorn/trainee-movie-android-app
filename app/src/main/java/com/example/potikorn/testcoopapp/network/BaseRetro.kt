@@ -6,13 +6,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class BaseRetro<T> {
-    fun baseRetroCaller(callService: Call<T>?, callback: InterActor.OnFinishedListener) {
+    fun baseRetroCaller(callService: Call<T>?, callback: InterActor.OnFinishedListenerMovie) {
         callService?.enqueue(object : Callback<T> {
             override fun onFailure(call: Call<T>?, t: Throwable?) {
             }
 
             override fun onResponse(call: Call<T>?, response: Response<T>?) {
-                callback.onSuccess(response?.body())
+                //callback.onSuccess(response?.body())
             }
         })
     }

@@ -4,9 +4,17 @@ import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.InterArty
 import com.example.potikorn.testcoopapp.models.movie.MovieList
 
-class SearchPresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListener {
-    override fun <T> onSuccess(t: T) {
-        view?.callBackData(arr = (t as MovieList).results)
+class SearchPresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListenerMovie {
+    override fun <T> onSuccessTop(t: T) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun <T> onSuccessPop(t: T) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun <T> onSuccessGenres(t: T) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private val act: InterActor.ActData by lazy { InterArty() }

@@ -45,10 +45,10 @@ interface BaseService {
     fun selectTelevisionByGenres(@Query("with_genres") query: String): Call<TelevisionTypeList>
 
     @GET("movie/popular?language=en-US&page=1")
-    fun selectMoviePopular(): Call<MovieList>
+    fun selectMoviePopular(): Observable<Response<MovieList>>
 
     @GET("movie/top_rated?&language=en-US&page=1")
-    fun selectMovieTopRate(): Call<MovieList>
+    fun selectMovieTopRate(): Observable<Response<MovieList>>
 
     @GET("movie/upcoming?language=en-US&page=1")
     fun selectMovieUpcoming(): Call<MovieList>
@@ -66,7 +66,7 @@ interface BaseService {
     fun selectTelevisionImage(@Path("tv_id") query: String): Call<ImageList>
 
     @GET("genre/movie/list?language=en-US")
-    fun selectMovieGenres(): Call<MovieTypeList>
+    fun selectMovieGenres(): Observable<Response<MovieTypeList>>
 
     @GET("genre/tv/list?language=en-US")
     fun selectTelevisionGenres(): Observable<Response<TelevisionTypeList>>
