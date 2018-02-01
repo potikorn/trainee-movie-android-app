@@ -3,14 +3,20 @@ import com.example.potikorn.testcoopapp.InterActor
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.InterArty
 import com.example.potikorn.testcoopapp.models.VidListFOF
-import com.example.potikorn.testcoopapp.models.movie.Movie
-import com.example.potikorn.testcoopapp.models.television.Television
-import com.example.potikorn.testcoopapp.models.YouVidData
 
-class YoutubePresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListener {
-    override fun <T> onSuccess(t: T) {
-        view?.callBackData(resultsYoutube = (t as VidListFOF).results)
+class YoutubePresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListenerMovie {
+    override fun <T> onSuccessTop(t: T) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    override fun <T> onSuccessPop(t: T) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun <T> onSuccessGenres(t: T) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 //    override fun onSuccessTop(results: List<Movie>?, resultTv: List<Television>?, resultsYoutube: List<YouVidData>?) {
 //        view?.callBackPopularData(results, resultTv , resultsYoutube)
 //    }

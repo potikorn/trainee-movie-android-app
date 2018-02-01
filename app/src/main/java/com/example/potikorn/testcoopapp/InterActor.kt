@@ -4,8 +4,10 @@ import com.example.potikorn.testcoopapp.models.television.TelevisionList
 import com.example.potikorn.testcoopapp.models.television.TelevisionTypeList
 
 interface InterActor {
-    interface OnFinishedListener {
-        fun <T> onSuccess(t: T)
+    interface OnFinishedListenerMovie {
+        fun <T> onSuccessTop(t: T)
+        fun <T> onSuccessPop(t: T)
+        fun <T> onSuccessGenres(t: T)
     }
 
     interface OnFinishedListenerTv {
@@ -15,29 +17,29 @@ interface InterActor {
     }
 
     interface ActData {
-        fun callYoutubeData(key: String, callback: OnFinishedListener)
-        fun callTVDataFromSearch(key: String, callback: OnFinishedListener)
-        fun callNowPlayTVData(callback: OnFinishedListener)
-        fun callTvOnTheAir(callback: OnFinishedListener)
+        fun callYoutubeData(key: String, callback: OnFinishedListenerMovie)
+        fun callTVDataFromSearch(key: String, callback: OnFinishedListenerMovie)
+        fun callNowPlayTVData(callback: OnFinishedListenerMovie)
+        fun callTvOnTheAir(callback: OnFinishedListenerMovie)
         //TODO change this
         fun callTvPopular(callback: OnFinishedListenerTv)
         //TODO chenge this
         fun callTvTopRate(callback: OnFinishedListenerTv)
 
-        fun callTvByGenres(genres: String, callback: OnFinishedListener)
-        fun callTvImage(tvId: String, callback: OnFinishedListener)
-        fun callMoviePopular(callback: OnFinishedListener)
-        fun callMovieTopRate(callback: OnFinishedListener)
-        fun callMovieUpcoming(callback: OnFinishedListener)
-        fun callMovieCredit(id: String, callback: OnFinishedListener)
-        fun callTelevisionCredit(id: String, callback: OnFinishedListener)
-        fun callMovieByGenres(genres: String, callback: OnFinishedListener)
-        fun callMovieImage(movieId: String, callback: OnFinishedListener)
-        fun callMovieGenres(callback: OnFinishedListener)
-        fun callMovieFilterByGenres(genres_id: String, callback: OnFinishedListener)
+        fun callTvByGenres(genres: String, callback: OnFinishedListenerMovie)
+        fun callTvImage(tvId: String, callback: OnFinishedListenerMovie)
+        fun callMoviePopular(callback: OnFinishedListenerMovie)
+        fun callMovieTopRate(callback: OnFinishedListenerMovie)
+        fun callMovieUpcoming(callback: OnFinishedListenerMovie)
+        fun callMovieCredit(id: String, callback: OnFinishedListenerMovie)
+        fun callTelevisionCredit(id: String, callback: OnFinishedListenerMovie)
+        ////todo use this
+        fun callMovieByGenres(genres: String, callback: OnFinishedListenerMovie)
+        fun callMovieImage(movieId: String, callback: OnFinishedListenerMovie)
+        fun callMovieGenres(callback: OnFinishedListenerMovie)
         fun callTvGenres(callback: OnFinishedListenerTv)
-        fun callMovieVideoPath(movieId: String, callback: OnFinishedListener)
-        fun callDataFromSearch(key: String, callback: OnFinishedListener)
-        fun callNowPlayData(callback: OnFinishedListener)
+        fun callMovieVideoPath(movieId: String, callback: OnFinishedListenerMovie)
+        fun callDataFromSearch(key: String, callback: OnFinishedListenerMovie)
+        fun callNowPlayData(callback: OnFinishedListenerMovie)
     }
 }
