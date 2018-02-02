@@ -3,12 +3,12 @@ package com.example.potikorn.testcoopapp
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import com.example.potikorn.testcoopapp.adapter.AdapterDetails
+import com.example.potikorn.testcoopapp.movies.adapter.AdapterDetails
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.YouVidData
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.models.television.Television
-import com.example.potikorn.testcoopapp.presenter.MainPresenter
+import com.example.potikorn.testcoopapp.movies.presenter.MainPresenter
 import kotlinx.android.synthetic.main.fragment_theme.*
 
 class MovieSeeAll : AppCompatActivity(), MainContractor.View {

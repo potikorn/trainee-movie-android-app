@@ -1,22 +1,17 @@
 package com.example.potikorn.testcoopapp
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
-import android.view.Menu
-import android.view.MenuItem
-import com.example.potikorn.testcoopapp.adapter.AdapterYoutube
+import com.example.potikorn.testcoopapp.movies.adapter.AdapterYoutube
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.models.YouVidData
 import com.example.potikorn.testcoopapp.network.BaseUrl
-import com.example.potikorn.testcoopapp.presenter.YoutubePresenter
+import com.example.potikorn.testcoopapp.movies.presenter.YoutubePresenter
 import kotlinx.android.synthetic.main.activity_details_movie.*
 
 

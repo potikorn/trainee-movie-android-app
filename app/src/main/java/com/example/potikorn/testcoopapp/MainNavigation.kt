@@ -10,7 +10,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.example.potikorn.testcoopapp.adapter.MyRecyclerViewAdapterButton
+import com.example.potikorn.testcoopapp.movies.adapter.MyRecyclerViewAdapterButton
 import com.example.potikorn.testcoopapp.fragment.FragmentMovie
 import com.example.potikorn.testcoopapp.fragment.FragmentMovieTV
 import com.example.potikorn.testcoopapp.network.BaseUrl
@@ -26,25 +26,9 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_navigation)
         setSupportActionBar(toolbar)
-        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
-        nav_view.setNavigationItemSelectedListener(this)
         buttonMovie()
         image.load(BaseUrl.baseUrlImageMovie + getString(R.string.movie_tail_path))
         adapterButtonRecycler?.setClickListener(this)
-
-        val toolbarFavorite = MaterialFavoriteButton.Builder(this)
-                .favorite(true)
-                .color(MaterialFavoriteButton.STYLE_WHITE)
-                .type(MaterialFavoriteButton.STYLE_HEART)
-                .rotationDuration(800)
-                .create()
-        toolbar.addView(toolbarFavorite)
-        toolbarFavorite.setOnFavoriteChangeListener { buttonView, favorite ->
-            Snackbar.make(buttonView, getString(R.string.toolbar_favorite_snack) + favorite,
-                    Snackbar.LENGTH_SHORT).show()}
-
         if (savedInstanceState != null) return
         supportFragmentManager.beginTransaction()
                 .replace(R.id.containerFragment, FragmentMovie(), "")
@@ -97,7 +81,9 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         when (position) {
             0 -> {supportFragmentManager.beginTransaction()
                     .replace(R.id.containerFragment, FragmentMovie(), "")
-                    .commit()  }
+                    .commit()
+
+            }
             1 -> {supportFragmentManager.beginTransaction()
                     .replace(R.id.containerFragment, FragmentMovieTV(), "")
                     .commit() }

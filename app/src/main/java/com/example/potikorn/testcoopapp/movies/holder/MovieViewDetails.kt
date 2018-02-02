@@ -1,4 +1,4 @@
-package com.example.potikorn.testcoopapp.holder
+package com.example.potikorn.testcoopapp.movies.holder
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.View

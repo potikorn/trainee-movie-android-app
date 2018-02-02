@@ -1,4 +1,4 @@
-package com.example.potikorn.testcoopapp.presenter
+package com.example.potikorn.testcoopapp.movies.presenter
 import com.example.potikorn.testcoopapp.InterActor
 import com.example.potikorn.testcoopapp.contracter.MovieFragmentContractor
 import com.example.potikorn.testcoopapp.models.InterArty

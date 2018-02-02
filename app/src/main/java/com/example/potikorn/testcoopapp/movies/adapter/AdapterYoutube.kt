@@ -1,10 +1,10 @@
-package com.example.potikorn.testcoopapp.adapter
+package com.example.potikorn.testcoopapp.movies.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.potikorn.testcoopapp.R
-import com.example.potikorn.testcoopapp.holder.YoutubeViewHolder
+import com.example.potikorn.testcoopapp.movies.holder.YoutubeViewHolder
 import com.example.potikorn.testcoopapp.models.YouVidData
 
 class AdapterYoutube(private var youtube: List<YouVidData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

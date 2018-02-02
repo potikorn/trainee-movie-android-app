@@ -1,9 +1,9 @@
-package com.example.potikorn.testcoopapp.adapter
+package com.example.potikorn.testcoopapp.movies.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.potikorn.testcoopapp.R
-import com.example.potikorn.testcoopapp.holder.MovieViewHolderGenres
+import com.example.potikorn.testcoopapp.movies.holder.MovieViewHolderGenres
 import com.example.potikorn.testcoopapp.models.movie.MovieType
 
 class AdapterMovieGenres(private var movie: List<MovieType>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
