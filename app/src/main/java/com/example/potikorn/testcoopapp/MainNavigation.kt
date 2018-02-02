@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main_navigation.*
 import kotlinx.android.synthetic.main.app_bar_main_navigation.*
 import kotlinx.android.synthetic.main.content_main_navigation.*
 
-class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+class MainNavigation: AppCompatActivity(),
         MyRecyclerViewAdapterButton.ItemClickListener {
     private var adapterButtonRecycler: MyRecyclerViewAdapterButton? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,20 +52,8 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         const val YOU_TAIL = "/mqdefault.jpg"
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_Home -> {
-            }
-            R.id.action_Event -> {
-            }
-            R.id.action_About -> {
-            }
-            R.id.action_Newes -> {
-            }
-        }
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
-    }
+
+
 
     private fun buttonMovie(){
         var animalNames: ArrayList<String> = ArrayList()
@@ -82,7 +70,6 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
             0 -> {supportFragmentManager.beginTransaction()
                     .replace(R.id.containerFragment, FragmentMovie(), "")
                     .commit()
-
             }
             1 -> {supportFragmentManager.beginTransaction()
                     .replace(R.id.containerFragment, FragmentMovieTV(), "")
