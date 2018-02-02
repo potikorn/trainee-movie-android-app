@@ -177,12 +177,38 @@ class InterArty : InterActor.ActData {
     }
 
     override fun callYoutubeData(key: String, callback: InterActor.OnFinishedListenerMovie) {
-        BaseRetro<VidListFOF>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.searchYoutube(key), callback)
+      //  BaseRetro<VidListFOF>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.searchYoutube(key), callback)
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.searchYoutube(key)?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<VidListFOF>>() {
+                    override fun onComplete() {
+                    }
+
+                    override fun onNext(t: Response<VidListFOF>) {
+                        t.body()?.let { callback.onSuccessTop(it) }
+                    }
+
+                    override fun onError(e: Throwable) {
+                    }
+                })
     }
 
     override fun callDataFromSearch(key: String, callback: InterActor.OnFinishedListenerMovie) {
-        val callService = ApiManager.Factory.create(BaseUrl.baseUrl)?.search(key)
-        BaseRetro<MovieList>().baseRetroCaller(callService, callback)
+//        val callService = ApiManager.Factory.create(BaseUrl.baseUrl)?.search(key)
+//        BaseRetro<MovieList>().baseRetroCaller(callService, callback)
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.search(key)?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<MovieList>>() {
+                    override fun onComplete() {
+                    }
+
+                    override fun onNext(t: Response<MovieList>) {
+                        t.body()?.let { callback.onSuccessTop(it) }
+                    }
+
+                    override fun onError(e: Throwable) {
+                    }
+                })
     }
 
     override fun callTVDataFromSearch(key: String, callback: InterActor.OnFinishedListenerMovie) {
