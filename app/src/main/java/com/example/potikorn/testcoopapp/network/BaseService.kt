@@ -18,7 +18,7 @@ import retrofit2.http.Query
 interface BaseService {
 
     @GET("search/movie")
-    fun search(@Query("query") query: String): Call<MovieList>
+    fun search(@Query("query") query: String): Observable<Response<MovieList>>
 
     @GET("movie/now_playing?language=en-US&page=1")
     fun nowPlaying(): Call<MovieList>
@@ -29,8 +29,8 @@ interface BaseService {
     @GET("tv/airing_today?language=en-US&page=1")
     fun nowTelevisionPlaying(): Call<TelevisionList>
 
-    @GET("search?part=snippet&type=video&key=AIzaSyDYYvMZaQTgjZkAieieADreg34ElRGBvEQ")
-    fun searchYoutube(@Query("q") query: String): Call<VidListFOF>
+    @GET("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyDYYvMZaQTgjZkAieieADreg34ElRGBvEQ")
+    fun searchYoutube(@Query("q") query: String): Observable<Response<VidListFOF>>
 
     @GET("tv/on_the_air?language=en-US&page=1")
     fun televisionOnTheAir(): Call<TelevisionList>
