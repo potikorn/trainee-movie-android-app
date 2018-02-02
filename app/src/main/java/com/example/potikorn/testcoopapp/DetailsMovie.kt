@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
-import com.example.potikorn.testcoopapp.adapter.AdapterYoutube
+import com.example.potikorn.testcoopapp.movies.adapter.AdapterYoutube
 import com.example.potikorn.testcoopapp.contracter.MainContractor
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.models.YouVidData
 import com.example.potikorn.testcoopapp.network.BaseUrl
-import com.example.potikorn.testcoopapp.presenter.YoutubePresenter
+import com.example.potikorn.testcoopapp.movies.presenter.YoutubePresenter
 import kotlinx.android.synthetic.main.activity_details_movie.*
 
 class DetailsMovie : AppCompatActivity(), MainContractor.View {

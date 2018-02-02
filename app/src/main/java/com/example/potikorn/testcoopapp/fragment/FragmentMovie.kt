@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.potikorn.testcoopapp.R
-import com.example.potikorn.testcoopapp.adapter.AdapterMovieGenres
-import com.example.potikorn.testcoopapp.adapter.AdapterPoster
+import com.example.potikorn.testcoopapp.movies.adapter.AdapterMovieGenres
+import com.example.potikorn.testcoopapp.movies.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.contracter.MovieFragmentContractor
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.models.movie.MovieType
-import com.example.potikorn.testcoopapp.presenter.MovieFragmentPresenter
+import com.example.potikorn.testcoopapp.movies.presenter.MovieFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_theme.*
 
 class FragmentMovie : Fragment(),MovieFragmentContractor.View{

@@ -10,7 +10,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.example.potikorn.testcoopapp.adapter.MyRecyclerViewAdapterButton
+import com.example.potikorn.testcoopapp.movies.adapter.MyRecyclerViewAdapterButton
 import com.example.potikorn.testcoopapp.fragment.FragmentMovie
 import com.example.potikorn.testcoopapp.fragment.FragmentMovieTV
 import com.example.potikorn.testcoopapp.network.BaseUrl
