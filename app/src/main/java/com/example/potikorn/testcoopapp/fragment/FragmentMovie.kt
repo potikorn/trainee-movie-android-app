@@ -1,4 +1,5 @@
 package com.example.potikorn.testcoopapp.fragment
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -11,8 +12,10 @@ import com.example.potikorn.testcoopapp.movies.adapter.AdapterPoster
 import com.example.potikorn.testcoopapp.contracter.MovieFragmentContractor
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.models.movie.MovieType
+import com.example.potikorn.testcoopapp.movies.MovieSeeAll
 import com.example.potikorn.testcoopapp.movies.presenter.MovieFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_theme.*
+
 
 class FragmentMovie : Fragment(),MovieFragmentContractor.View{
 
@@ -36,6 +39,19 @@ class FragmentMovie : Fragment(),MovieFragmentContractor.View{
             adapter = movieAdapterGenres
         }
 
+        seeAllPopular.setOnClickListener {
+            val intent = Intent(context, MovieSeeAll::class.java)
+            intent.putExtra("KEY_DATA_MOVIE", 1)
+            this.startActivity(intent)
+        }
+        seeAllTop.setOnClickListener {
+            val intent = Intent(context, MovieSeeAll::class.java)
+            intent.putExtra("KEY_DATA_MOVIE", 2)
+            this.startActivity(intent)
+        }
+
+
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +74,9 @@ class FragmentMovie : Fragment(),MovieFragmentContractor.View{
     override fun callTopRateData(arrMovie: List<Movie>?) {
         arrMovie?.let {it-> movieAdapterTop.setItem(it) }
     }
+
+
+
 
 
 }
