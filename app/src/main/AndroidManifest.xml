@@ -15,43 +15,46 @@
             android:name=".MainNavigation"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".movies.DetailsMovie">
+        <activity android:name=".DetailsMovie">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.potikorn.testcoopapp.MainNavigation" />
         </activity>
-        <activity android:name=".television.DetailsTelevision">
+        <activity android:name=".DetailsTelevision">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.potikorn.testcoopapp.MainNavigation" />
         </activity>
-        <activity android:name=".movies.MovieSeeAll">
+        <activity android:name=".MovieSeeAll">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.potikorn.testcoopapp.SearchActivity" />
-
         </activity>
-
-        <activity android:name=".television.TvSeeAll">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.potikorn.testcoopapp.SearchActivity" />
-
-        </activity>
-
         <activity android:name=".SearchActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.potikorn.testcoopapp.MainNavigation" />
         </activity>
 
+        <activity android:name=".movies.ShowDetailGenresActivity" />
+        <activity android:name=".television.GenresTelevisionDetailActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.potikorn.testcoopapp.MainNavigation" />
+        </activity>
+        <activity android:name="GenresShowDetailActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.potikorn.testcoopapp.MainNavigation" />
+        </activity>
     </application>
 
 </manifest>

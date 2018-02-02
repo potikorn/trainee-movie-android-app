@@ -1,5 +1,4 @@
 package com.example.potikorn.testcoopapp.fragment
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -9,15 +8,22 @@ import android.view.ViewGroup
 import com.example.potikorn.testcoopapp.R
 import com.example.potikorn.testcoopapp.movies.adapter.AdapterMovieGenres
 import com.example.potikorn.testcoopapp.movies.adapter.AdapterPoster
-import com.example.potikorn.testcoopapp.contracter.MovieFragmentContractor
+import com.example.potikorn.testcoopapp.contactor.MovieFragmentContractor
+import com.example.potikorn.testcoopapp.models.CreditActor
+import com.example.potikorn.testcoopapp.models.Crew
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.models.movie.MovieType
-import com.example.potikorn.testcoopapp.movies.MovieSeeAll
 import com.example.potikorn.testcoopapp.movies.presenter.MovieFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_theme.*
 
-
 class FragmentMovie : Fragment(),MovieFragmentContractor.View{
+    override fun callCredit(arrActor: List<CreditActor>?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun callCrew(arrActor: List<Crew>?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private val movieAdapterPop: AdapterPoster by lazy { AdapterPoster(listOf()) }
     private val movieAdapterTop: AdapterPoster by lazy { AdapterPoster(listOf()) }
@@ -38,19 +44,6 @@ class FragmentMovie : Fragment(),MovieFragmentContractor.View{
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = movieAdapterGenres
         }
-
-        seeAllPopular.setOnClickListener {
-            val intent = Intent(context, MovieSeeAll::class.java)
-            intent.putExtra("KEY_DATA_MOVIE", 1)
-            this.startActivity(intent)
-        }
-        seeAllTop.setOnClickListener {
-            val intent = Intent(context, MovieSeeAll::class.java)
-            intent.putExtra("KEY_DATA_MOVIE", 2)
-            this.startActivity(intent)
-        }
-
-
 
     }
 
@@ -74,9 +67,6 @@ class FragmentMovie : Fragment(),MovieFragmentContractor.View{
     override fun callTopRateData(arrMovie: List<Movie>?) {
         arrMovie?.let {it-> movieAdapterTop.setItem(it) }
     }
-
-
-
 
 
 }

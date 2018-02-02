@@ -14,11 +14,12 @@
         tool:ignore="UnknownId">
 
         <ImageView
-            android:id="@+id/TV"
+            android:id="@+id/tvPosterDetail"
             android:layout_width="150dp"
             android:layout_height="198dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/boy" />
+            android:layout_marginStart="10dp"
+            android:src="@drawable/boy"
+            android:contentDescription="@string/show_image" />
 
 
         <android.support.v7.widget.AppCompatTextView
@@ -28,14 +29,15 @@
             android:layout_gravity="top"
             android:layout_marginLeft="180sp"
             android:padding="7dp"
-            tool:text="ชื่อหนัง"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tool:text="ชื่อหนัง" />
 
 
         <RatingBar
             android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
@@ -44,7 +46,6 @@
             android:numStars="5"
             android:padding="7dp"
             android:stepSize="1.0"
-            style="?android:attr/ratingBarStyleIndicator"
             android:theme="@style/RatingBar" />
 
         <android.support.v7.widget.AppCompatTextView

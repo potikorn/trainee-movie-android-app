@@ -28,4 +28,8 @@
     <string name="toolbar_favorite_snack">"Toolbar favorite clicked: "</string>
     <string name="popular">Top 5 Popular:</string>
     <string name="top_rate">Top 5 Rating:</string>
+    <string name="show_image">show_image</string>
+    <string name="show_actor_image">show_actor_image</string>
+    <string name="actor">Actor</string>
+    <string name="crew">Crew</string>
 </resources>
