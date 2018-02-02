@@ -4,8 +4,8 @@ import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
-import com.example.potikorn.testcoopapp.DetailsMovie
-import com.example.potikorn.testcoopapp.DetailsTelevision
+import com.example.potikorn.testcoopapp.movies.DetailsMovie
+import com.example.potikorn.testcoopapp.television.DetailsTelevision
 import com.example.potikorn.testcoopapp.load
 import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.network.BaseUrl

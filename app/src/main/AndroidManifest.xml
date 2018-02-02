@@ -16,34 +16,42 @@
             android:label=""
             android:theme="@style/AppTheme.NoActionBar">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
-        <activity android:name=".DetailsMovie">
+        <activity android:name=".movies.DetailsMovie">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.potikorn.testcoopapp.MainNavigation" />
         </activity>
-        <activity android:name=".DetailsTelevision">
+        <activity android:name=".television.DetailsTelevision">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.potikorn.testcoopapp.MainNavigation" />
         </activity>
-        <activity android:name=".MovieSeeAll">
+        <activity android:name=".movies.MovieSeeAll">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.potikorn.testcoopapp.SearchActivity" />
+
         </activity>
+
+        <activity android:name=".television.TvSeeAll">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.potikorn.testcoopapp.SearchActivity" />
+
+        </activity>
+
         <activity android:name=".SearchActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.potikorn.testcoopapp.MainNavigation" />
         </activity>
-        <activity android:name=".genres.GenresTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
