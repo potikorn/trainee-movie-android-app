@@ -97,7 +97,9 @@ class MainNavigation: AppCompatActivity(), NavigationView.OnNavigationItemSelect
         when (position) {
             0 -> {supportFragmentManager.beginTransaction()
                     .replace(R.id.containerFragment, FragmentMovie(), "")
-                    .commit()  }
+                    .commit()
+
+            }
             1 -> {supportFragmentManager.beginTransaction()
                     .replace(R.id.containerFragment, FragmentMovieTV(), "")
                     .commit() }
