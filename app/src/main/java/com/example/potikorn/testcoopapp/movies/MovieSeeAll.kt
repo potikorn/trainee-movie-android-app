@@ -1,9 +1,12 @@
 package com.example.potikorn.testcoopapp.movies
+
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.example.potikorn.testcoopapp.R
-import com.example.potikorn.testcoopapp.contracter.MovieFragmentContractor
+import com.example.potikorn.testcoopapp.contactor.MovieFragmentContractor
+import com.example.potikorn.testcoopapp.models.CreditActor
+import com.example.potikorn.testcoopapp.models.Crew
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.models.movie.MovieType
 import com.example.potikorn.testcoopapp.movies.adapter.AdapterDetails
@@ -11,6 +14,12 @@ import com.example.potikorn.testcoopapp.movies.presenter.MovieFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_theme.*
 
 class MovieSeeAll : AppCompatActivity(), MovieFragmentContractor.View {
+    override fun callCredit(arrActor: List<CreditActor>?) {
+    }
+
+    override fun callCrew(arrActor: List<Crew>?) {
+        }
+
     private val movieAdapterSeeAll: AdapterDetails by lazy { AdapterDetails(listOf()) }
     private var presenter: MovieFragmentContractor.Presenter? = MovieFragmentPresenter(this)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,19 +30,23 @@ class MovieSeeAll : AppCompatActivity(), MovieFragmentContractor.View {
         televisionList.adapter = movieAdapterSeeAll
 
 
-
         var type = intent.extras.getInt("KEY_DATA_MOVIE")
-        if(type==1){
+        if (type == 1) {
             presenter?.callPopularData()
-        }else{ presenter?.topRateData() } }
+        } else {
+            presenter?.topRateData()
+        }
+    }
 
     override fun callbackGenres(arrMovie: List<MovieType>?) {}
 
     override fun callBackPopularData(arrMovie: List<Movie>?) {
-        arrMovie?.let { it->movieAdapterSeeAll.setItem(it) } }
+        arrMovie?.let { it -> movieAdapterSeeAll.setItem(it) }
+    }
 
     override fun callTopRateData(arrMovie: List<Movie>?) {
-        arrMovie?.let { it->movieAdapterSeeAll.setItem(it) } }
+        arrMovie?.let { it -> movieAdapterSeeAll.setItem(it) }
+    }
 
 
 }
