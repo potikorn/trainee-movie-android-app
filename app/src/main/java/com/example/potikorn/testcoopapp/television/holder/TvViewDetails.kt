@@ -17,7 +17,7 @@ class TvViewDetails (view: View) : RecyclerView.ViewHolder(view) {
             movies_layout.setOnClickListener {
 
             }
-            TV.load(BaseUrl.baseUrlImageMovie + tv.poster_path)
+            //TV.load(BaseUrl.baseUrlImageMovie + tv.poster_path)
         }
     }
 
