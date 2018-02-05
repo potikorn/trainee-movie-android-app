@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
 import com.example.potikorn.testcoopapp.movies.adapter.AdapterDetails
-import com.example.potikorn.testcoopapp.contracter.MainContractor
+import com.example.potikorn.testcoopapp.contactor.MainContractor
 import com.example.potikorn.testcoopapp.models.movie.Movie
 import com.example.potikorn.testcoopapp.models.television.Television
 import com.example.potikorn.testcoopapp.models.YouVidData

@@ -16,13 +16,68 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 
 class InterArty : InterActor.ActData {
+    override fun callMovieActor(id: String, callback: InterActor.OnFinishedListenerMovie) {
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.selectMovieCredit(id)?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<CreditList>>() {
+                    override fun onComplete() {
+                    }
 
-    override fun callMovieCredit(id: String, callback: InterActor.OnFinishedListenerMovie) {
-        BaseRetro<CreditList>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.selectMovieCredit(id), callback)
+                    override fun onNext(t: Response<CreditList>) {
+                        t.body()?.let { callback.onSuccessActor(it) }
+                    }
+
+                    override fun onError(e: Throwable) {
+                    }
+                })
     }
 
-    override fun callTelevisionCredit(id: String, callback: InterActor.OnFinishedListenerMovie) {
-        BaseRetro<CreditList>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.selectMovieCredit(id), callback)
+    override fun callMovieCrew(id: String, callback: InterActor.OnFinishedListenerMovie) {
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.selectMovieCredit(id)?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<CreditList>>() {
+                    override fun onComplete() {
+                    }
+
+                    override fun onNext(t: Response<CreditList>) {
+                        t.body()?.let { callback.onSuccessCrew(it) }
+                    }
+
+                    override fun onError(e: Throwable) {
+                    }
+                })
+    }
+
+    override fun callTelevisionCrew(id: String, callback: InterActor.OnFinishedListenerTv) {
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.selectTelevisionCredit(id)?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<CreditList>>() {
+                    override fun onComplete() {
+                    }
+
+                    override fun onNext(t: Response<CreditList>) {
+                        t.body()?.let { callback.onSuccessCrew(it) }
+                    }
+
+                    override fun onError(e: Throwable) {
+                    }
+                })
+    }
+
+    override fun callTelevisionActor(id: String, callback: InterActor.OnFinishedListenerTv) {
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.selectTelevisionCredit(id)?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<CreditList>>() {
+                    override fun onComplete() {
+                    }
+
+                    override fun onNext(t: Response<CreditList>) {
+                        t.body()?.let { callback.onSuccessActor(it) }
+                    }
+
+                    override fun onError(e: Throwable) {
+                    }
+                })
     }
 
     override fun callTvImage(tvId: String, callback: InterActor.OnFinishedListenerMovie) {
@@ -31,7 +86,6 @@ class InterArty : InterActor.ActData {
 
     }
 
-    //**
     override fun callMovieGenres(callback: InterActor.OnFinishedListenerMovie) {
         val baseService by lazy { ApiManager.createRx() }
         baseService?.selectMovieGenres()?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
@@ -46,7 +100,6 @@ class InterArty : InterActor.ActData {
                     override fun onError(e: Throwable) {
                     }
                 })
-
     }
 
     override fun callTvGenres(callback: InterActor.OnFinishedListenerTv) {
@@ -111,10 +164,20 @@ class InterArty : InterActor.ActData {
                 })
     }
 
-    override fun callTvByGenres(genres: String, callback: InterActor.OnFinishedListenerMovie) {
+    override fun callTvByGenres(genres: String, callback: InterActor.OnFinishedListenerTv) {
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.selectTelevisionByGenres(genres)?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<TelevisionList>>() {
+                    override fun onComplete() {
+                    }
 
-        BaseRetro<TelevisionTypeList>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.selectTelevisionByGenres(genres), callback)
+                    override fun onNext(t: Response<TelevisionList>) {
+                        t.body()?.let { callback.onSuccessTop(it) }
+                    }
 
+                    override fun onError(e: Throwable) {
+                    }
+                })
     }
 
     override fun callMoviePopular(callback: InterActor.OnFinishedListenerMovie) {
@@ -158,7 +221,21 @@ class InterArty : InterActor.ActData {
 
     }
 
-    override fun callMovieByGenres(genres: String, callback: InterActor.OnFinishedListenerMovie) {}
+    override fun callMovieByGenres(genres: String, callback: InterActor.OnFinishedListenerMovie) {
+        val baseService by lazy { ApiManager.createRx() }
+        baseService?.selectMovieByGenres(genres)?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<MovieList>>() {
+                    override fun onComplete() {
+                    }
+
+                    override fun onNext(t: Response<MovieList>) {
+                        t.body()?.let { callback.onSuccessTop(it) }
+                    }
+
+                    override fun onError(e: Throwable) {
+                    }
+                })
+    }
 
     override fun callMovieImage(movieId: String, callback: InterActor.OnFinishedListenerMovie) {
 
@@ -177,7 +254,7 @@ class InterArty : InterActor.ActData {
     }
 
     override fun callYoutubeData(key: String, callback: InterActor.OnFinishedListenerMovie) {
-      //  BaseRetro<VidListFOF>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.searchYoutube(key), callback)
+        //  BaseRetro<VidListFOF>().baseRetroCaller(ApiManager.create(BaseUrl.baseUrl)?.searchYoutube(key), callback)
         val baseService by lazy { ApiManager.createRx() }
         baseService?.searchYoutube(key)?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<VidListFOF>>() {

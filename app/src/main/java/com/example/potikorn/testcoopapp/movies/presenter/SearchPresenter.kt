@@ -1,10 +1,26 @@
 package com.example.potikorn.testcoopapp.movies.presenter
 import com.example.potikorn.testcoopapp.InterActor
-import com.example.potikorn.testcoopapp.contracter.MainContractor
+import com.example.potikorn.testcoopapp.contactor.MainContractor
+import com.example.potikorn.testcoopapp.models.CreditList
 import com.example.potikorn.testcoopapp.models.InterArty
 import com.example.potikorn.testcoopapp.models.movie.MovieList
 
 class SearchPresenter(val view: MainContractor.View? = null) : MainContractor.Presenter, InterActor.OnFinishedListenerMovie {
+    override fun onSuccessActor(t: CreditList) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onSuccessCrew(t: CreditList) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun callBackTvActorData() {
+
+    }
+
+    override fun callBackMovieActorData() {
+        }
+
     override fun <T> onSuccessTop(t: T) {
         view?.callBackData((t as MovieList).results)
     }

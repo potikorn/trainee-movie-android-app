@@ -42,7 +42,7 @@ interface BaseService {
     fun televisionTopRate(): Observable<Response<TelevisionList>>
 
     @GET("discover/tv?language=en-US&sort_by=vote_average.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false")
-    fun selectTelevisionByGenres(@Query("with_genres") query: String): Call<TelevisionTypeList>
+    fun selectTelevisionByGenres(@Query("with_genres") query: String): Observable<Response<TelevisionList>>
 
     @GET("movie/popular?language=en-US&page=1")
     fun selectMoviePopular(): Observable<Response<MovieList>>
@@ -54,10 +54,13 @@ interface BaseService {
     fun selectMovieUpcoming(): Call<MovieList>
 
     @GET("movie/{movie_id}/credits?api_key=c1618550083ac39008a92222d9c8a6a9")
-    fun selectMovieCredit(@Path("movie_id") query: String): Call<CreditList>
+    fun selectMovieCredit(@Path("movie_id") query: String): Observable<Response<CreditList>>
+
+    @GET("tv/{movie_id}/credits?api_key=c1618550083ac39008a92222d9c8a6a9")
+    fun selectTelevisionCredit(@Path("movie_id") query: String): Observable<Response<CreditList>>
 
     @GET("discover/movie?language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1")
-    fun selectMovieByGenres(@Query("with_genres") query: String): Call<MovieList>
+    fun selectMovieByGenres(@Query("with_genres") query: String): Observable<Response<MovieList>>
 
     @GET("movie/{movie_id}/images?language=en-US&include_image_language=en")
     fun selectMovieImage(@Path("movie_id") query: String): Call<ImageList>
