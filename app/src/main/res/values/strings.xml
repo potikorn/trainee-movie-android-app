@@ -32,4 +32,7 @@
     <string name="show_actor_image">show_actor_image</string>
     <string name="actor">Actor</string>
     <string name="crew">Crew</string>
+    <string name="in_theater">In Theater</string>
+    <string name="title_series">Series</string>
+    <string name="now_playing">Now Playing</string>
 </resources>
